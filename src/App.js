@@ -8,6 +8,8 @@ import News from "./components/News";
 import Locations from "./components/Locations";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import RegisterPage from "./components/Register/RegisterPage";
+import LoginPage from "./components/Login/LoginPage";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/how-it-works" exact component={HowItWorks} />
           <Route path="/news" exact component={News} />
           <Route path="/locations" exact component={Locations} />
+          <Route path="/register-page" exact component={RegisterPage} />
+          <Route path="/login-page" exact component={LoginPage} />
         </Switch>
       </BrowserRouter>
     </div>
