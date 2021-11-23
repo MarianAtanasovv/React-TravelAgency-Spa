@@ -1,13 +1,13 @@
 const Footer = () => {
   return (
-    <div class="footer-area">
-      <div class="container">
-        <div class="footer-top footer-padding">
-          <div class="row justify-content-between">
-            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
-              <div class="single-footer-caption mb-50">
-                <div class="single-footer-caption mb-30">
-                  <div class="footer-logo">
+    <div className="footer-area">
+      <div className="container">
+        <div className="footer-top footer-padding">
+          <div className="row justify-content-between">
+            <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+              <div className="single-footer-caption mb-50">
+                <div className="single-footer-caption mb-30">
+                  <div className="footer-logo">
                     <a href="index.html">
                       <img src="assets/img/logo/logo2_footer.png" alt="" />
                     </a>
@@ -15,9 +15,9 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
-              <div class="single-footer-caption mb-50">
-                <div class="footer-tittle">
+            <div className="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+              <div className="single-footer-caption mb-50">
+                <div className="footer-tittle">
                   <h4>Quick Link</h4>
                   <ul>
                     <li>
@@ -36,9 +36,9 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-              <div class="single-footer-caption mb-50">
-                <div class="footer-tittle">
+            <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+              <div className="single-footer-caption mb-50">
+                <div className="footer-tittle">
                   <h4>Categories</h4>
                   <ul>
                     <li>
@@ -57,12 +57,12 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="single-footer-caption mb-50">
-                <div class="footer-tittle">
+            <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div className="single-footer-caption mb-50">
+                <div className="footer-tittle">
                   <h4>Download App</h4>
                   <ul>
-                    <li class="app-log">
+                    <li className="app-log">
                       <a href="#">
                         <img src="assets/img/gallery/app-logo.png" alt="" />
                       </a>
@@ -78,34 +78,34 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div class="footer-bottom">
-          <div class="row d-flex justify-content-between align-items-center">
-            <div class="col-xl-9 col-lg-8">
-              <div class="footer-copy-right">
+        <div className="footer-bottom">
+          <div className="row d-flex justify-content-between align-items-center">
+            <div className="col-xl-9 col-lg-8">
+              <div className="footer-copy-right">
                 <p>
                   Copyright &copy;
                   <script>document.write(new Date().getFullYear());</script> All
                   rights reserved | This template is made with{" "}
-                  <i class="fa fa-heart" aria-hidden="true"></i> by{" "}
+                  <i className="fa fa-heart" aria-hidden="true"></i> by{" "}
                   <a href="https://colorlib.com" target="_blank">
                     Colorlib
                   </a>
                 </p>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-4">
-              <div class="footer-social f-right">
+            <div className="col-xl-3 col-lg-4">
+              <div className="footer-social f-right">
                 <a href="#">
-                  <i class="fab fa-facebook-f"></i>
+                  <i className="fab fa-facebook-f"></i>
                 </a>
                 <a href="#">
-                  <i class="fab fa-twitter"></i>
+                  <i className="fab fa-twitter"></i>
                 </a>
                 <a href="#">
-                  <i class="fas fa-globe"></i>
+                  <i className="fas fa-globe"></i>
                 </a>
                 <a href="#">
-                  <i class="fab fa-instagram"></i>
+                  <i className="fab fa-instagram"></i>
                 </a>
               </div>
             </div>
