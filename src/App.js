@@ -46,7 +46,7 @@ function App() {
       <Header {...userInfo} />
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
