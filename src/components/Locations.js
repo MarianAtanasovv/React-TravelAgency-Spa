@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import LocationsCard from "./LocationsCard";
-import * as PetService from "../services/locationsService";
+import * as locationService from "../services/locationsService";
 
 const Locations = () => {
-  const [locations, setPets] = useState([]);
+  const [locations, setLocations] = useState([]);
+
   useEffect(() => {
-    PetService.getAllLocations().then((result) => {
-      console.log(result);
-      setPets(result);
+    locationService.getAllLocations().then((result) => {
+      setLocations(result);
     });
   }, []);
 
