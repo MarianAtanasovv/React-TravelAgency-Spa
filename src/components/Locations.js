@@ -25,7 +25,7 @@ const Locations = () => {
         {/* locationsCardsStart */}
 
         {locations.map((location) => (
-          <LocationsCard key={x._id} location={x} />
+          <LocationsCard key={location._id} location={location} />
         ))}
 
         <div class="row justify-content-center">
