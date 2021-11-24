@@ -1,4 +1,4 @@
-const baseUrl = " http://travel-agency-react-softuni.herokuapp.com/jsonstore";
+const baseUrl = " http://localhost:3030/jsonstore";
 
 export const getAllLocations = async () => {
   let response = await fetch(`${baseUrl}/locations`);
