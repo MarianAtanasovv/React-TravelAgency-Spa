@@ -1,4 +1,5 @@
-const baseUrl = "http://travel-agency-react-softuni.herokuapp.com/jsonstore";
+const baseUrl =
+  "http://travel-agency-react-softuni.herokuapp.com/jsonstore/travel-agency";
 
 export const getAllLocations = async () => {
   let response = await fetch(`${baseUrl}/locations`);
