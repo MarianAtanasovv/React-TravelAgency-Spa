@@ -23,8 +23,11 @@ const Locations = () => {
           </div>
         </div>
         {/* locationsCardsStart */}
-        {/* {locations.map(location => <LocationsCard> )} */}
-        {/* locationsCardsEnd */}
+
+        {locations.map((location) => (
+          <LocationsCard key={x._id} location={x} />
+        ))}
+
         <div class="row justify-content-center">
           <div class="room-btn pt-20">
             <a href="catagori.html" class="btn view-btn1">
