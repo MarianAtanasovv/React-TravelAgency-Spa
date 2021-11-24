@@ -1,4 +1,16 @@
+import { useEffect, useState } from "react";
+import LocationsCard from "./LocationsCard";
+import * as PetService from "../services/locationsService";
+
 const Locations = () => {
+  const [locations, setPets] = useState([]);
+  useEffect(() => {
+    PetService.getAllLocations().then((result) => {
+      console.log(result);
+      setPets(result);
+    });
+  }, []);
+
   return (
     <div class="popular-location section-padding30">
       <div class="container">
@@ -10,21 +22,9 @@ const Locations = () => {
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-6">
-            <div class="single-location mb-30">
-              <div class="location-img">
-                <img src="assets/img/gallery/location6.png" alt="" />
-              </div>
-              <div class="location-details">
-                <p>indonesia</p>
-                <a href="#" class="location-btn">
-                  78 <i class="ti-plus"></i> Location
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* locationsCardsStart */}
+        {/* {locations.map(location => <LocationsCard> )} */}
+        {/* locationsCardsEnd */}
         <div class="row justify-content-center">
           <div class="room-btn pt-20">
             <a href="catagori.html" class="btn view-btn1">
