@@ -13,6 +13,9 @@ import RegisterPage from "./components/Register/RegisterPage";
 import LoginPage from "./components/Login/LoginPage";
 import * as authService from "./services/authService";
 import LogoutPage from "./components/LogoutPage";
+import Create from "./components/Create";
+
+
 
 function App() {
   const [userInfo, setUserInfo] = useState({
@@ -40,10 +43,13 @@ function App() {
       isAuthenticated: false,
       user: null,
     });
+
+    
   };
   return (
     <div id="box">
-      <Header {...userInfo} />
+   
+        <Header {...userInfo} />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -55,6 +61,7 @@ function App() {
           <Route path="/register-page" element={<RegisterPage />} />
           <Route path="/login-page" element={<LoginPage onLogin={onLogin} />} />
           <Route path="/logout" element={<LogoutPage onLogout={onLogout} />} />
+          <Route path="/create" element={<Create />} />
         </Routes>
       </main>
       <footer>

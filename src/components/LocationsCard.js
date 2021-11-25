@@ -7,7 +7,7 @@ const LocationsCard = ({ location }) => {
             <img src={location.img} alt="" />
           </div>
           <div class="location-details">
-            <p>{location.name}</p>
+            <p>{location.country}</p>
             <a href="#" class="location-btn">
               78 <i class="ti-plus"></i> Location
             </a>

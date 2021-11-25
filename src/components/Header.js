@@ -54,7 +54,7 @@ const Header = ({ isAuthenticated, username }) => {
           </div>
         </div>
       </div>
-      {/* <!-- Preloader Start --> */}
+
       <header>
         {/* <!-- Header Start --> */}
         <div className="header-area header-transparent">

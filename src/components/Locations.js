@@ -24,7 +24,7 @@ const Locations = () => {
         </div>
         {/* locationsCardsStart */}
 
-        {locations.map((location) => (
+        {locations.map(location => (
           <LocationsCard key={location._id} location={location} />
         ))}
 
