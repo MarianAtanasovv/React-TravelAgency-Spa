@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Select, MenuItem } from "@material-ui/core";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
-import * as locationsService from "../services/locationsService";
+import * as countriesService from "../services/countriesService";
 
 const Create = () => {
   const navigate = useNavigate();
@@ -24,14 +24,15 @@ const Create = () => {
     };
   });
 
-  const onLocationCreate = (e) => {
+  const onCountryCreate = (e) => {
     e.preventDefault();
     let formData = new FormData(e.currentTarget);
     let img = formData.get("img");
     let country = formData.get("country");
     console.log(country.value);
+    console.log(img.value);
 
-    locationsService
+    countriesService
       .create({
         img,
         country,
@@ -43,7 +44,7 @@ const Create = () => {
 
   return (
     <div className="form-body-create">
-      <form action="post" onSubmit={onLocationCreate} class="decor">
+      <form action="post" onSubmit={onCountryCreate} class="decor">
         <div class="form-left-decoration"></div>
         <div class="form-right-decoration"></div>
         <div class="circle"></div>

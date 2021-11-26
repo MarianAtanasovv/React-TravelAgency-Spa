@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import LocationsCard from "./LocationsCard";
-import * as locationService from "../services/locationsService";
+import CountriesCard from "./CountriesCard";
+import * as countriesService from "../services/countriesService";
 
-const Locations = () => {
-  const [locations, setLocations] = useState([]);
+const Countries = () => {
+  const [countries, setCountries] = useState([]);
 
   useEffect(() => {
-    locationService.getAllLocations().then((result) => {
-      setLocations(result);
+    countriesService.getAllCountries().then((result) => {
+      setCountries(result);
     });
   }, []);
 
@@ -22,11 +22,11 @@ const Locations = () => {
             </div>
           </div>
         </div>
-        {/* locationsCardsStart */}
 
-        {locations.map(location => (
-          <LocationsCard key={location._id} location={location} />
+        {countries.map((country) => (
+          <CountriesCard key={country._id} country={country} />
         ))}
+        {console.log(countries)}
 
         <div class="row justify-content-center">
           <div class="room-btn pt-20">
@@ -39,4 +39,4 @@ const Locations = () => {
     </div>
   );
 };
-export default Locations;
+export default Countries;

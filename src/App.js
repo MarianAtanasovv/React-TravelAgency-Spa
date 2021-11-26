@@ -6,7 +6,7 @@ import AboutUs from "./components/AboutUs";
 import Categories from "./components/Categories";
 import HowItWorks from "./components/HowItWorks";
 import News from "./components/News";
-import Locations from "./components/Locations";
+import Countries from "./components/Countries";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import RegisterPage from "./components/Register/RegisterPage";
@@ -57,7 +57,7 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/news" element={<News />} />
-          <Route path="/locations" element={<Locations />} />
+          <Route path="/countries" element={<Countries />} />
           <Route path="/register-page" element={<RegisterPage />} />
           <Route path="/login-page" element={<LoginPage onLogin={onLogin} />} />
           <Route path="/logout" element={<LogoutPage onLogout={onLogout} />} />

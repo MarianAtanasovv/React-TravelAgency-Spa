@@ -13,7 +13,7 @@ const Header = ({ isAuthenticated, username }) => {
         <Link to="/categories">Catagories</Link>
       </li>
       <li>
-        <Link to="/locations">Locations</Link>
+        <Link to="/countries">Countries</Link>
       </li>
 
       <li>
