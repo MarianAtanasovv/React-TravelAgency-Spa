@@ -8,6 +8,16 @@ export const getAllCountries = async () => {
 
   return result;
 };
+
+export const getAllLocations = async () => {
+  let response = await fetch(`${baseUrl}/travel-agency/locations`);
+  let locations = await response.json();
+
+  let result = Object.values(locations);
+
+  return result;
+};
+
 export const create = async (countriesData) => {
   let response = await fetch(`${baseUrl}/travel-agency/countries`, {
     method: "POST",

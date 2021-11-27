@@ -4,7 +4,7 @@ import * as countriesService from "../services/countriesService";
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
-
+  
   useEffect(() => {
     countriesService.getAllCountries().then((result) => {
       setCountries(result);
@@ -26,7 +26,7 @@ const Countries = () => {
         {countries.map((country) => (
           <CountriesCard key={country._id} country={country} />
         ))}
-        {console.log(countries)}
+     
 
         <div class="row justify-content-center">
           <div class="room-btn pt-20">

@@ -1,4 +1,6 @@
 const CountriesCard = ({ country }) => {
+  console.log(country.img);
+  console.log(country.name);
   return (
     <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-6">
