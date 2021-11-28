@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import * as countriesService from "../services/countriesService";
 import LocationsCard from "./LocationsCard";
 
 const Locations = () => {
+  const { country } = useParams();
   const [locations, setLocations] = useState([]);
+
   useEffect(() => {
-    countriesService.getAllLocations().then((result) => {
+    countriesService.getAllLocations(country).then((result) => {
       setLocations(result);
     });
   }, []);
+  console.log("locations" + locations);
+  console.log("country" + country);
+
+  const filtered = locations.filter((x) => x.name == country);
 
   return (
     <div className="listing-area pt-120 pb-120">
@@ -20,7 +27,6 @@ const Locations = () => {
                 {locations.map((location) => (
                   <LocationsCard key={location._id} location={location} />
                 ))}
-                {console.log(locations)}
               </div>
             </div>
           </div>

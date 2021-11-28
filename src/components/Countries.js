@@ -4,7 +4,7 @@ import * as countriesService from "../services/countriesService";
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
-  
+
   useEffect(() => {
     countriesService.getAllCountries().then((result) => {
       setCountries(result);
@@ -12,11 +12,11 @@ const Countries = () => {
   }, []);
 
   return (
-    <div class="popular-location section-padding30">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="section-tittle text-center mb-80">
+    <div className="popular-location section-padding30">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="section-tittle text-center mb-80">
               <span>Most visited places</span>
               <h2>Popular Locations</h2>
             </div>
@@ -26,11 +26,10 @@ const Countries = () => {
         {countries.map((country) => (
           <CountriesCard key={country._id} country={country} />
         ))}
-     
 
-        <div class="row justify-content-center">
-          <div class="room-btn pt-20">
-            <a href="catagori.html" class="btn view-btn1">
+        <div className="row justify-content-center">
+          <div className="room-btn pt-20">
+            <a href="catagori.html" className="btn view-btn1">
               View All Places
             </a>
           </div>

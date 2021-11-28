@@ -1,18 +1,17 @@
+import { Link } from "react-router-dom";
 const CountriesCard = ({ country }) => {
-  console.log(country.img);
-  console.log(country.name);
   return (
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-6">
-        <div class="single-location mb-30">
-          <div class="location-img">
+    <div className="row">
+      <div className="col-lg-4 col-md-6 col-sm-6">
+        <div className="single-location mb-30">
+          <div className="location-img">
             <img src={country.img} alt="" />
           </div>
-          <div class="location-details">
-            <p>{country.country}</p>
-            <a href="#" class="location-btn">
-              78 <i class="ti-plus"></i> Location
-            </a>
+          <div className="location-details">
+            <p>{country.name}</p>
+            <Link className="button" to={`/locations?country=${country.name}`}>
+              Details
+            </Link>
           </div>
         </div>
       </div>
