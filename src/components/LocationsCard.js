@@ -1,4 +1,5 @@
 const LocationsCard = ({ location }) => {
+  console.log(location);
   return (
     <div className="col-lg-6 ">
       <div className="single-listing mb-30">

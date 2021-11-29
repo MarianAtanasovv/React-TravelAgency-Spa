@@ -12,11 +12,8 @@ const Locations = () => {
       setLocations(result);
     });
   }, []);
-  console.log("locations" + locations);
-  console.log("country" + country);
 
-  const filtered = locations.filter((x) => x.name == country);
-
+  
   return (
     <div className="listing-area pt-120 pb-120">
       <div className="container">

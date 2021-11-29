@@ -9,16 +9,17 @@ export const getAllCountries = async () => {
   return result;
 };
 
-export const getAllLocations = async () => {
-  let response = await fetch(`${baseUrl}/travel-agency/locations`);
+export const getAllLocations = async (country) => {
+  console.log(country);
+  let response = await fetch(`${baseUrl}/travel-agency/countries/${country}`);
+
   let locations = await response.json();
 
   let result = Object.values(locations);
-
   return result;
 };
 
-export const create = async (countriesData) => {
+export const createCountry = async (countriesData) => {
   let response = await fetch(`${baseUrl}/travel-agency/countries`, {
     method: "POST",
     headers: {
@@ -26,6 +27,23 @@ export const create = async (countriesData) => {
     },
     body: JSON.stringify(countriesData),
   });
+
+  let result = await response.json();
+
+  return result;
+};
+
+export const createLocation = async (locationData) => {
+  let response = await fetch(
+    `${baseUrl}/travel-agency/countries/${locationData.country}`,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(locationData),
+    }
+  );
 
   let result = await response.json();
 

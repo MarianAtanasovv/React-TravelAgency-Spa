@@ -24,18 +24,22 @@ const Create = () => {
     };
   });
 
-  const onCountryCreate = (e) => {
+  const onLocationCreate = (e) => {
     e.preventDefault();
     let formData = new FormData(e.currentTarget);
     let img = formData.get("img");
     let country = formData.get("country");
-    console.log(country.value);
-    console.log(img.value);
+    let description = formData.get("description");
+    let exactAddress = formData.get("exactAddress");
+    let name = formData.get("name");
 
     countriesService
-      .create({
+      .createLocation({
+        name,
         img,
+        description,
         country,
+        exactAddress,
       })
       .then((result) => {
         navigate("/");
@@ -44,12 +48,17 @@ const Create = () => {
 
   return (
     <div className="form-body-create">
-      <form action="post" onSubmit={onCountryCreate} class="decor">
+      <form action="post" onSubmit={onLocationCreate} class="decor">
         <div class="form-left-decoration"></div>
         <div class="form-right-decoration"></div>
         <div class="circle"></div>
         <div class="form-inner">
           <h1>Add a location</h1>
+          <input
+            type="text"
+            name="name"
+            placeholder="Alexander Nevsky Cathedral"
+          />
           <input type="text" name="img" placeholder="Image" />
 
           <Select
@@ -65,6 +74,18 @@ const Create = () => {
                 </MenuItem>
               ))}
           </Select>
+          <textarea
+            type="text"
+            className="description"
+            name="description"
+            placeholder="This place is perfect for..."
+          />
+          <textarea
+            type="text"
+            className="exact-address"
+            name="exactAddress"
+            placeholder="Peter Dimkov Street..."
+          />
 
           <button type="submit" href="/">
             Submit

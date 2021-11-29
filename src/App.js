@@ -13,9 +13,10 @@ import RegisterPage from "./components/Register/RegisterPage";
 import LoginPage from "./components/Login/LoginPage";
 import * as authService from "./services/authService";
 import LogoutPage from "./components/LogoutPage";
-import Create from "./components/Create";
-import Locations from "./components/Locations";
+import CreateCountry from "./components/CreateCountry";
+import CreateLocation from "./components/CreateLocation";
 
+import Locations from "./components/Locations";
 
 function App() {
   const [userInfo, setUserInfo] = useState({
@@ -46,8 +47,11 @@ function App() {
   };
   return (
     <div id="box">
-      <Header {...userInfo} />
       <main>
+        <header>
+          <Header {...userInfo} />
+        </header>
+
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about-us" element={<AboutUs />} />
@@ -58,8 +62,9 @@ function App() {
           <Route path="/register-page" element={<RegisterPage />} />
           <Route path="/login-page" element={<LoginPage onLogin={onLogin} />} />
           <Route path="/logout" element={<LogoutPage onLogout={onLogout} />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/locations" element={<Locations />} />
+          <Route path="/create-country" element={<CreateCountry />} />
+          <Route path="/create-location" element={<CreateLocation />} />
+          <Route path="/countries/:country" element={<Locations />} />
         </Routes>
       </main>
       <footer>

@@ -8,8 +8,8 @@ const CountriesCard = ({ country }) => {
             <img src={country.img} alt="" />
           </div>
           <div className="location-details">
-            <p>{country.name}</p>
-            <Link className="button" to={`/locations?country=${country.name}`}>
+            <p>{country.country}</p>
+            <Link className="button" to={`/countries/${country.country}`}>
               Details
             </Link>
           </div>
