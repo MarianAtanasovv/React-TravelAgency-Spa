@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom";
 const LocationsCard = ({ location }) => {
-  console.log(location);
   return (
     <div className="col-lg-6 ">
       <div className="single-listing mb-30">
@@ -7,17 +7,15 @@ const LocationsCard = ({ location }) => {
           <img src={location.img} alt="" />
         </div>
         <div className="list-caption">
-          <span>Open</span>
           <h3>
-            <a href="listing_details.html">Name: {location.name}</a>
+            <Link
+              className="button"
+              to={`/details/${location.country}/${location._id}`}
+            >
+              {location.name}
+            </Link>
           </h3>
-          <p>700/D, Kings road, Green lane, 85/ London</p>
-          <div className="list-footer">
-            <ul>
-              <li>+10 278 367 9823</li>
-              <li>contact@midnight.com</li>
-            </ul>
-          </div>
+          <p>{location.description.substring(0, 300)}...</p>
         </div>
       </div>
     </div>

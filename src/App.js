@@ -15,7 +15,7 @@ import * as authService from "./services/authService";
 import LogoutPage from "./components/LogoutPage";
 import CreateCountry from "./components/CreateCountry";
 import CreateLocation from "./components/CreateLocation";
-
+import Details from "./components/Details";
 import Locations from "./components/Locations";
 
 function App() {
@@ -65,6 +65,10 @@ function App() {
           <Route path="/create-country" element={<CreateCountry />} />
           <Route path="/create-location" element={<CreateLocation />} />
           <Route path="/countries/:country" element={<Locations />} />
+          <Route
+            path="/details/:locationName/:locationId"
+            element={<Details />}
+          />
         </Routes>
       </main>
       <footer>

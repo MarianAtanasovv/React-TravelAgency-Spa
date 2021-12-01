@@ -12,8 +12,8 @@ const Locations = () => {
       setLocations(result);
     });
   }, []);
-
   
+
   return (
     <div className="listing-area pt-120 pb-120">
       <div className="container">

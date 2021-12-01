@@ -10,7 +10,6 @@ const Countries = () => {
       setCountries(result);
     });
   }, []);
-
   return (
     <div className="popular-location section-padding30">
       <div className="container">

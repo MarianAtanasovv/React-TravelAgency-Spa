@@ -1,16 +1,20 @@
 const baseUrl = "http://localhost:3030/jsonstore";
 
 export const getAllCountries = async () => {
-  let response = await fetch(`${baseUrl}/travel-agency/countries`);
+  let response = await fetch(`${baseUrl}/travel-agency/countries/countries`);
 
   let countries = await response.json();
   let result = Object.values(countries);
 
   return result;
 };
+export const getOne = (locationName, locationId) => {
+  return fetch(
+    `${baseUrl}/travel-agency/countries/${locationName}/${locationId}`
+  ).then((res) => res.json());
+};
 
 export const getAllLocations = async (country) => {
-  console.log(country);
   let response = await fetch(`${baseUrl}/travel-agency/countries/${country}`);
 
   let locations = await response.json();
