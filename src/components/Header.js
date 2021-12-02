@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
-const Header = ({ isAuthenticated, username }) => {
+const Header = ({ email }) => {
   let authenticatedArea = (
     <ul id="navigation">
+      <span>Welcome, {email}</span>
       <li>
         <Link to="/">Home</Link>
       </li>
@@ -73,9 +74,7 @@ const Header = ({ isAuthenticated, username }) => {
                   <div className="col-xl-10 col-lg-10 col-md-8">
                     {/* <!-- Main-menu --> */}
                     <div className="main-menu f-right d-none d-lg-block">
-                      <nav>
-                        {isAuthenticated ? authenticatedArea : guestArea}
-                      </nav>
+                      <nav>{email ? authenticatedArea : guestArea}</nav>
                     </div>
                   </div>
                   {/* <!-- Mobile Menu --> */}

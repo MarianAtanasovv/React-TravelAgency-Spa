@@ -11,8 +11,17 @@ const LoginPage = ({ onLogin }) => {
     let formData = new FormData(e.currentTarget);
 
     let email = formData.get("email");
+    let password = formData.get("password");
 
-    authService.login(email);
+    authService
+      .login(email, password)
+      .then((authData) => {
+        onLogin(authData);
+        navigate("/");
+      })
+      .catch((error) => {
+        // TODO: notification
+      });
 
     onLogin(email);
 
@@ -25,7 +34,7 @@ const LoginPage = ({ onLogin }) => {
         <div className="left">
           <h1>Sign in</h1>
 
-          <input type="text" name="username" placeholder="Username" />
+          <input type="text" name="email" placeholder="Email" />
           {/* <input type="text" name="email" placeholder="E-mail" /> */}
           <input type="password" name="password" placeholder="Password" />
           <input
