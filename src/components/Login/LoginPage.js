@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/authContext";
 
 import * as authService from "../../services/authService";
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = () => {
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onLoginHandler = (e) => {
@@ -16,21 +19,19 @@ const LoginPage = ({ onLogin }) => {
     authService
       .login(email, password)
       .then((authData) => {
-        onLogin(authData);
+        login(authData);
         navigate("/");
       })
       .catch((error) => {
         // TODO: notification
       });
 
-    onLogin(email);
-
     navigate("/");
   };
 
   return (
     <div>
-      <form id="login-box" onSubmit={onLoginHandler} method="post">
+      <form id="login-box" onSubmit={onLoginHandler} method="POST">
         <div className="left">
           <h1>Sign in</h1>
 

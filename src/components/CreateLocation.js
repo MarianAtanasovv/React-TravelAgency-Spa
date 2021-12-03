@@ -4,8 +4,11 @@ import { Select, MenuItem } from "@material-ui/core";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import * as countriesService from "../services/countriesService";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/authContext";
 
 const Create = () => {
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [selectedCountry, setSelectedCountry] = useState("");
 
@@ -23,6 +26,7 @@ const Create = () => {
       value: value,
     };
   });
+  // TODO: AcessToken!!!!!!
 
   const onLocationCreate = (e) => {
     e.preventDefault();
@@ -34,13 +38,16 @@ const Create = () => {
     let name = formData.get("name");
 
     countriesService
-      .createLocation({
-        name,
-        img,
-        description,
-        country,
-        exactAddress,
-      })
+      .createLocation(
+        {
+          name,
+          img,
+          description,
+          country,
+          exactAddress,
+        },
+        user.accessToken
+      )
       .then((result) => {
         navigate("/");
       });

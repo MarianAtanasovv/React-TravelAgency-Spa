@@ -17,25 +17,31 @@ import CreateCountry from "./components/CreateCountry";
 import CreateLocation from "./components/CreateLocation";
 import Details from "./components/Details";
 import Locations from "./components/Locations";
+import useLocalStorage from "./hooks/useLocalStorage";
+
+const initialAuthState = {
+  _id: "",
+  email: "",
+  accessToken: "",
+};
 
 function App() {
-  const [user, setUser] = useState({
-    acessToken: "",
-    email: "",
-    _id: "",
-  });
+  const [user, setUser] = useLocalStorage("user", initialAuthState);
 
-  const onLogin = (authData) => {
+  const login = (authData) => {
     setUser(authData);
   };
-  const onLogout = () => {};
+
+  const logout = () => {
+    setUser(initialAuthState);
+  };
 
   return (
-    <AuthContext.Provider value={true}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       <div id="box">
         <main>
           <header>
-            <Header {...user} />
+            <Header />
           </header>
 
           <Routes>
@@ -46,14 +52,8 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/countries" element={<Countries />} />
             <Route path="/register-page" element={<RegisterPage />} />
-            <Route
-              path="/login-page"
-              element={<LoginPage onLogin={onLogin} />}
-            />
-            <Route
-              path="/logout"
-              element={<LogoutPage onLogout={onLogout} />}
-            />
+            <Route path="/login-page" element={<LoginPage />} />
+            <Route path="/logout" element={<LogoutPage />} />
             <Route path="/create-country" element={<CreateCountry />} />
             <Route path="/create-location" element={<CreateLocation />} />
             <Route path="/countries/:country" element={<Locations />} />

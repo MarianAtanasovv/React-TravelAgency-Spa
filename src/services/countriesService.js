@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3030/jsonstore";
+const baseUrl = "http://localhost:3030/data";
 
 export const getAllCountries = async () => {
   let response = await fetch(`${baseUrl}/travel-agency/countries/countries`);
@@ -23,11 +23,12 @@ export const getAllLocations = async (country) => {
   return result;
 };
 
-export const createCountry = async (countriesData) => {
-  let response = await fetch(`${baseUrl}/travel-agency/countries`, {
+export const createCountry = async (countriesData, token) => {
+  let response = await fetch(`${baseUrl}/countries`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
+      "X-Authorization": token,
     },
     body: JSON.stringify(countriesData),
   });
