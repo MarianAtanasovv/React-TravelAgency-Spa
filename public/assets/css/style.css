@@ -1,4 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,500,600,700|Sacramento|Sulphur+Point:400,700&display=swap");
+/* Style buttons */
+.delete-btn {
+	background-color: red; /* Blue background */
+	border: none; /* Remove borders */
+	color: white; /* White text */
+	padding: 12px 16px; /* Some padding */
+	font-size: 16px; /* Set a font size */
+	cursor: pointer; /* Mouse pointer on hover */
+	width: 70px;
+  }
+  
+  /* Darker background on mouse-over */
+  .delete-btn:hover {
+	background-color: RoyalBlue;
+  }
+
 .white-bg {
 	background: #ffffff
 }
@@ -199,8 +215,7 @@ p {
 	clear: both
 }
 
-a,
-.button {
+a {
 	-webkit-transition: all .3s ease-out 0s;
 	-moz-transition: all .3s ease-out 0s;
 	-ms-transition: all .3s ease-out 0s;
@@ -229,8 +244,7 @@ a:hover,
 	text-decoration: none
 }
 
-a,
-button {
+a {
 	color: #fff;
 	outline: medium none
 }
@@ -3712,47 +3726,7 @@ hr {
 	top: 31%
 }
 
-.h1-testimonial-active button.slick-arrow {
-	position: absolute;
-	top: 50%;
-	left: 0px;
-	transform: translateY(-50%);
-	border: 0;
-	padding: 0;
-	z-index: 2;
-	cursor: pointer;
-	font-size: 20px;
-	-webkit-transition: all .3s ease-out 0s;
-	-moz-transition: all .3s ease-out 0s;
-	-ms-transition: all .3s ease-out 0s;
-	-o-transition: all .3s ease-out 0s;
-	transition: all .3s ease-out 0s;
-	color: #eb566c;
-	background: none
-}
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-	.h1-testimonial-active button.slick-arrow {
-		left: -28px
-	}
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-	.h1-testimonial-active button.slick-arrow {
-		left: -28px
-	}
-}
-
-.h1-testimonial-active button.slick-next {
-	left: auto;
-	right: 0px
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-	.h1-testimonial-active button.slick-next {
-		right: -28px
-	}
-}
 
 .slick-initialized .slick-slide {
 	outline: 0
@@ -5341,23 +5315,8 @@ form.search-box2 .search-form a {
 	box-shadow: none
 }
 
-.blog_right_sidebar .search_widget .input-group button {
-	background: #eb566c;
-	border-left: 0;
-	border: 1px solid #f0e9ff;
-	padding: 4px 15px;
-	border-left: 0;
-	cursor: pointer
-}
 
-.blog_right_sidebar .search_widget .input-group button i {
-	color: #fff
-}
 
-.blog_right_sidebar .search_widget .input-group button span {
-	font-size: 14px;
-	color: #999999
-}
 
 .blog_right_sidebar .newsletter_widget .form-control {
 	height: 50px;
@@ -5378,19 +5337,6 @@ form.search-box2 .search-form a {
 	box-shadow: none
 }
 
-.blog_right_sidebar .newsletter_widget .input-group button {
-	background: #fff;
-	border-left: 0;
-	border: 1px solid #f0e9ff;
-	padding: 4px 15px;
-	border-left: 0
-}
-
-.blog_right_sidebar .newsletter_widget .input-group button i,
-.blog_right_sidebar .newsletter_widget .input-group button span {
-	font-size: 14px;
-	color: #fff
-}
 
 .blog_right_sidebar .post_category_widget .cat-list li {
 	border-bottom: 1px solid #f0e9ff;
@@ -6266,9 +6212,6 @@ form.search-box2 .search-form a {
 	display: none !important
 }
 
-#test-form button.mfp-close {
-	display: none !important
-}
 
 @media (max-width: 767px) {
 	#test-form button.mfp-close {
@@ -6280,31 +6223,7 @@ form.search-box2 .search-form a {
 	}
 }
 
-#test-form button.mfp-close {
-	overflow: visible;
-	cursor: pointer;
-	background: transparent;
-	border: 0;
-	-webkit-appearance: none;
-	display: block;
-	outline: none;
-	padding: 0;
-	z-index: 1046;
-	box-shadow: none;
-	touch-action: manipulation;
-	width: 40px;
-	height: 40px;
-	background: #4A3600;
-	text-align: center;
-	line-height: 20px;
-	position: absolute;
-	right: 0;
-	border-bottom-right-radius: 20px;
-	border-bottom-left-radius: 20px;
-	position: absolute;
-	right: -6px;
-	color: #fff !important
-}
+
 
 .mfp-bg {
 	top: 0;
@@ -6383,23 +6302,8 @@ del {
 	color: #828bb2
 }
 
-.button-area {
-	background: #fff
-}
 
-.button-area .border-top-generic {
-	padding: 70px 15px;
-	border-top: 1px dotted #eee
-}
 
-.button-group-area .genric-btn {
-	margin-right: 10px;
-	margin-top: 10px
-}
-
-.button-group-area .genric-btn:last-child {
-	margin-right: 0
-}
 
 .genric-btn {
 	display: inline-block;
@@ -7608,27 +7512,67 @@ form {
 	resize: none;
 }
 
-button {
-	width: 100%;
-	padding: 10px;
-	margin-top: 20px;
-	border-radius: 20px;
-	border: none;
-	border-bottom: 4px solid #3e4f24;
-	background: #5a7233;
-	font-size: 16px;
-	font-weight: 400;
-	color: #fff;
-}
+
 .listing-caption{
     background-color: white;
-}
-button:hover {
-	background: #3e4f24;
 }
 
 @media (min-width: 568px) {
 	form {
 		width: 60%;
 	}
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.searchingBar{
+	margin-left: 450px;
+	margin-bottom: 30px;
 }

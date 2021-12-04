@@ -2,28 +2,51 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as countriesService from "../services/countriesService";
 import LocationsCard from "./LocationsCard";
+import "./locations.css";
 
 const Locations = () => {
-  const { country } = useParams();
+  const [search, setSearch] = useState(``);
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
-    countriesService.getAllLocations(country).then((result) => {
+    countriesService.getAllLocations().then((result) => {
       setLocations(result);
     });
   }, []);
-  
 
   return (
     <div className="listing-area pt-120 pb-120">
       <div className="container">
+        <div className="searchingBar">
+          <input
+            type="search"
+            id="site-search"
+            name="q"
+            aria-label="Search through site content"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <button>Search</button>
+        </div>
         <div className="row">
           <div className="listing-details-area">
             <div className="container">
               <div className="row">
-                {locations.map((location) => (
-                  <LocationsCard key={location._id} location={location} />
-                ))}
+                {locations
+                  .filter((value) => {
+                    if (search == "") {
+                      return value;
+                    } else if (
+                      value.name
+                        .toLowerCase()
+                        .includes(search.toLocaleLowerCase())
+                    ) {
+                      return value;
+                    }
+                  })
+                  .map((location) => (
+                    <LocationsCard key={location._id} location={location} />
+                  ))}
               </div>
             </div>
           </div>

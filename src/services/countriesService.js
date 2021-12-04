@@ -1,21 +1,12 @@
-const baseUrl = "http://localhost:3030/data";
+const authUrl = "http://localhost:3030/data";
 
-export const getAllCountries = async () => {
-  let response = await fetch(`${baseUrl}/travel-agency/countries/countries`);
-
-  let countries = await response.json();
-  let result = Object.values(countries);
-
-  return result;
-};
-export const getOne = (locationName, locationId) => {
-  return fetch(
-    `${baseUrl}/travel-agency/countries/${locationName}/${locationId}`
-  ).then((res) => res.json());
+export const getOne = (locationId) => {
+  console.log(locationId);
+  return fetch(`${authUrl}/locations/${locationId}`).then((res) => res.json());
 };
 
-export const getAllLocations = async (country) => {
-  let response = await fetch(`${baseUrl}/travel-agency/countries/${country}`);
+export const getAllLocations = async () => {
+  let response = await fetch(`${authUrl}/locations`);
 
   let locations = await response.json();
 
@@ -23,14 +14,14 @@ export const getAllLocations = async (country) => {
   return result;
 };
 
-export const createCountry = async (countriesData, token) => {
-  let response = await fetch(`${baseUrl}/countries`, {
+export const createLocation = async (locationData, token) => {
+  let response = await fetch(`${authUrl}/locations`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
       "X-Authorization": token,
     },
-    body: JSON.stringify(countriesData),
+    body: JSON.stringify(locationData),
   });
 
   let result = await response.json();
@@ -38,19 +29,11 @@ export const createCountry = async (countriesData, token) => {
   return result;
 };
 
-export const createLocation = async (locationData) => {
-  let response = await fetch(
-    `${baseUrl}/travel-agency/countries/${locationData.country}`,
-    {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(locationData),
-    }
-  );
-
-  let result = await response.json();
-
-  return result;
+export const destroy = (locationId, token) => {
+  return fetch(`${authUrl}/locations/${locationId}`, {
+    method: "DELETE",
+    headers: {
+      "X-Authorization": token,
+    },
+  }).then((res) => res.json());
 };

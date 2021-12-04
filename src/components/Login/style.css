@@ -131,12 +131,12 @@ input[type="submit"]:active {
   text-align: center;
 }
 
-button.social-signin {
+.social-signin {
   margin-bottom: 20px;
   width: 220px;
   height: 36px;
   border: none;
-  border-radius: 2px;
+  border-radius: 2px;button
   color: #FFF;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;

@@ -1,17 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as countriesService from "../services/countriesService";
+import { AuthContext } from "../contexts/authContext";
 
 const Details = () => {
   const navigate = useNavigate();
   const [location, setLocation] = useState({});
+  const { user } = useContext(AuthContext);
   const { locationName, locationId } = useParams();
 
   useEffect(() => {
-    countriesService.getOne(locationName, locationId).then((locationResult) => {
+    countriesService.getOne(locationId).then((locationResult) => {
       setLocation(locationResult);
     });
-  }, [locationName, locationId]);
+  }, [locationId]);
+
+  const deleteHandler = (e) => {
+    e.preventDefault();
+
+    countriesService.destroy(locationId, user.accessToken).then(() => {
+      navigate("/");
+    });
+  };
 
   return (
     <div>
@@ -26,7 +36,10 @@ const Details = () => {
           </div>
         </div>
       </div>
-      <img className="details-location-img" src={location.img}></img>
+      <div>
+        <img className="details-location-img" src={location.img}></img>
+      </div>
+
       <div class="listing-caption section-padding2">
         <div class="container">
           <div class="row justify-content-center">
@@ -40,6 +53,9 @@ const Details = () => {
             <div class="col-lg-8">
               <h3 class="mb-30">Location</h3>
               <p class="mb-30">{location.exactAddress}</p>
+              <button class="delete-btn" onClick={deleteHandler}>
+                <i class="fa fa-trash"></i>
+              </button>
               <div class="d-none d-sm-block mb-30 pb-4"></div>
             </div>
           </div>

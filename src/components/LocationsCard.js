@@ -8,14 +8,11 @@ const LocationsCard = ({ location }) => {
         </div>
         <div className="list-caption">
           <h3>
-            <Link
-              className="button"
-              to={`/details/${location.country}/${location._id}`}
-            >
+            <Link className="button" to={`/details/${location._id}`}>
               {location.name}
             </Link>
           </h3>
-          <p>{location.description.substring(0, 300)}...</p>
+          <p>{location.description}...</p>
         </div>
       </div>
     </div>
