@@ -1,7 +1,6 @@
 const authUrl = "http://localhost:3030/data";
 
 export const getOne = (locationId) => {
-  console.log(locationId);
   return fetch(`${authUrl}/locations/${locationId}`).then((res) => res.json());
 };
 

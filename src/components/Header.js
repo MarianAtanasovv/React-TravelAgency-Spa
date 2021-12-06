@@ -45,6 +45,11 @@ const Header = () => {
           <i className="ti-user"></i> Login
         </Link>
       </li>
+      <li className="register">
+        <Link to="/register-page">
+          <i className="ti-user"></i> Register
+        </Link>
+      </li>
     </ul>
   );
   return (

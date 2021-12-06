@@ -15,6 +15,7 @@ import LogoutPage from "./components/LogoutPage";
 import CreateLocation from "./components/CreateLocation";
 import Details from "./components/Details";
 import Locations from "./components/Locations";
+import Comment from "./components/Comment";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 const initialAuthState = {
@@ -54,7 +55,16 @@ function App() {
 
             <Route path="/create-location" element={<CreateLocation />} />
             <Route path="/locations" element={<Locations />} />
-            <Route path="/details/:locationId" element={<Details />} />
+
+            <Route
+              path="/details/:locationId"
+              element={
+                <>
+                  <Details />
+                  {/* <Comment /> */}
+                </>
+              }
+            />
           </Routes>
         </main>
         <footer>
