@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/authContext";
 import * as countriesService from "../services/countriesService";
 import * as commentService from "../services/commentService";
-import { AuthContext } from "../contexts/authContext";
 import "./comments.css";
 import Comment from "./Comment";
 
@@ -26,6 +26,13 @@ const Details = ({ comment }) => {
   }, [locationId]);
 
   const deleteHandler = (e) => {
+    e.preventDefault();
+
+    countriesService.destroy(locationId, user.accessToken).then(() => {
+      navigate("/");
+    });
+  };
+  const deleteHandlerComment = (e) => {
     e.preventDefault();
 
     countriesService.destroy(locationId, user.accessToken).then(() => {
@@ -116,6 +123,7 @@ const Details = ({ comment }) => {
                       Post comment
                     </button>
                   </div>
+               
                 </div>
               </form>
             </div>

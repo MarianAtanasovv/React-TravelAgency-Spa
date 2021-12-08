@@ -22,3 +22,12 @@ export const getAll = async () => {
 
   return result;
 };
+
+export const destroy = (commentId, token) => {
+  return fetch(`${baseUrl}/comments/${commentId}`, {
+    method: "DELETE",
+    headers: {
+      "X-Authorization": token,
+    },
+  }).then((res) => res.json());
+};
