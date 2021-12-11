@@ -17,6 +17,11 @@ const Header = () => {
       <li>
         <Link to="/categories">Catagories</Link>
       </li>
+
+      <li>
+        <Link to="/create-location">Create Location</Link>
+      </li>
+
       <li>
         <Link to="/locations">Locations</Link>
       </li>

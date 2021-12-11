@@ -5,9 +5,12 @@ import * as countriesService from "../services/countriesService";
 import * as commentService from "../services/commentService";
 import "./comments.css";
 import Comment from "./Comment";
+import "./details.css";
+import "./likes.css";
 
 const Details = ({ comment }) => {
   const { user } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const [comments, setComments] = useState([]);
   const [location, setLocation] = useState({});
@@ -61,6 +64,12 @@ const Details = ({ comment }) => {
       });
   };
 
+  const adminDelete = (
+    <button className="delete-btn" onClick={deleteHandler}>
+      <i className="fa fa-trash"></i>
+    </button>
+  );
+
   return (
     <div>
       <div className="hero-area2  slider-height2 hero-overly2 d-flex align-items-center ">
@@ -91,9 +100,18 @@ const Details = ({ comment }) => {
             <div className="col-lg-8">
               <h3 className="mb-30">Location</h3>
               <p className="mb-30">{location.exactAddress}</p>
-              <button className="delete-btn" onClick={deleteHandler}>
-                <i className="fa fa-trash"></i>
-              </button>
+              {/* {user.email === "peter@abv.bg" || user.email === "john@abv.bg"
+                ? adminDelete
+                : console.log("unauthorized")} */}
+              <div>
+                <input
+                  type="image"
+                  onClick="console.log(alalal)"
+                  className="details-heart"
+                  src="https://i.natgeofe.com/k/7bfcf2d2-542e-44f0-962a-c36f2efa98a5/heart.jpg"
+                />
+                <span id="total-likes">Likes: 10</span>
+              </div>
               {comments.map((x) => (
                 <Comment key={x._id} comment={x} />
               ))}
@@ -123,7 +141,6 @@ const Details = ({ comment }) => {
                       Post comment
                     </button>
                   </div>
-               
                 </div>
               </form>
             </div>

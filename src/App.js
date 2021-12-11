@@ -61,7 +61,6 @@ function App() {
               element={
                 <>
                   <Details />
-                  {/* <Comment /> */}
                 </>
               }
             />

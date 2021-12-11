@@ -31,3 +31,19 @@ export const destroy = (commentId, token) => {
     },
   }).then((res) => res.json());
 };
+
+export const getOne = (commentId, token) => {
+  return fetch(`${baseUrl}/comments/${commentId}`).then((res) => res.json());
+};
+
+export const edit = (commentData, commentId, token) => {
+  return fetch(`${baseUrl}/comments/${commentId}`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+      "X-Authorization": token,
+    },
+    body: JSON.stringify(commentData),
+  }).then((res) => res.json());
+ 
+};

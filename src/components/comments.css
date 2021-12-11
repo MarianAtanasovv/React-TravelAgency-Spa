@@ -6,6 +6,7 @@
 .comment-text {
     font-size: 20px;
     margin-left: 13px;
+    
 }
 
 .fs-12 {
@@ -39,8 +40,24 @@
 }
 .commenting-box{
     border: solid 2px gray;
+    max-height: 250px;
+    overflow: scroll
 }
 .commenting-form{
     margin-left: -12px;
     margin-top: 35px;
+}
+#editing-button{
+    margin-left: 420px;
+    width: 23%;
+    
+}
+#editingButton {
+    margin-right: -225px;
+}
+#deleteComment{
+    margin-left: -19px;
+}
+#editing-textarea{
+     max-height: 250px;
 }
