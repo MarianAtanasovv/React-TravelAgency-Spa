@@ -47,17 +47,7 @@
     margin-left: -12px;
     margin-top: 35px;
 }
-#editing-button{
-    margin-left: 420px;
-    width: 23%;
-    
-}
-#editingButton {
-    margin-right: -225px;
-}
+
 #deleteComment{
     margin-left: -19px;
-}
-#editing-textarea{
-     max-height: 250px;
 }

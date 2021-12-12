@@ -7,14 +7,22 @@ import "./comments.css";
 import Comment from "./Comment";
 import "./details.css";
 import "./likes.css";
+import * as likesService from "../services/likesService";
+import useLocationState from "../hooks/useLocationState";
 
 const Details = ({ comment }) => {
   const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const [comments, setComments] = useState([]);
-  const [location, setLocation] = useState({});
   const { locationId } = useParams();
+  const [location, setLocation] = useLocationState(locationId);
+
+  useEffect(() => {
+    likesService.getLocationsLikes(locationId).then((likes) => {
+      setLocation((state) => ({ ...state, likes }));
+    });
+  }, []);
 
   useEffect(() => {
     commentService.getAll().then((commentResult) => {
@@ -35,11 +43,13 @@ const Details = ({ comment }) => {
       navigate("/");
     });
   };
-  const deleteHandlerComment = (e) => {
-    e.preventDefault();
 
-    countriesService.destroy(locationId, user.accessToken).then(() => {
-      navigate("/");
+  const likeButtonClick = () => {
+    if (user._id === location._ownerId) {
+      return;
+    }
+    likesService.like(user._id, locationId).then(() => {
+      setLocation((state) => ({ ...state, likes: [...state.likes, user._id] }));
     });
   };
 
@@ -64,9 +74,9 @@ const Details = ({ comment }) => {
       });
   };
 
-  const adminDelete = (
+  const ownerDelete = (
     <button className="delete-btn" onClick={deleteHandler}>
-      <i className="fa fa-trash"></i>
+      <i className="fa fa-trash"> Delete </i>
     </button>
   );
 
@@ -100,21 +110,25 @@ const Details = ({ comment }) => {
             <div className="col-lg-8">
               <h3 className="mb-30">Location</h3>
               <p className="mb-30">{location.exactAddress}</p>
-              {/* {user.email === "peter@abv.bg" || user.email === "john@abv.bg"
-                ? adminDelete
-                : console.log("unauthorized")} */}
+
               <div>
                 <input
                   type="image"
-                  onClick="console.log(alalal)"
+                  onClick={likeButtonClick}
+                  // disabled={location.likes?.includes(user._id)}
                   className="details-heart"
                   src="https://i.natgeofe.com/k/7bfcf2d2-542e-44f0-962a-c36f2efa98a5/heart.jpg"
                 />
-                <span id="total-likes">Likes: 10</span>
               </div>
-              {comments.map((x) => (
-                <Comment key={x._id} comment={x} />
-              ))}
+
+              <p id="total-likes">Likes: {location.likes?.length || 0}</p>
+              {user._id === location._ownerId ? ownerDelete : null}
+
+              {comments
+                .filter((x) => x.currenctLocationId == locationId)
+                .map((x) => (
+                  <Comment key={x._id} comment={x} />
+                ))}
               <form
                 method="POST"
                 onSubmit={onCommentCreate}
@@ -126,16 +140,16 @@ const Details = ({ comment }) => {
                     name="username"
                     placeholder="Your username"
                   />
-                  <div class="d-flex flex-row align-items-start">
+                  <div className="d-flex flex-row align-items-start">
                     <textarea
-                      class="form-control ml-1 shadow-none textarea"
+                      className="form-control ml-1 shadow-none textarea"
                       name="comment"
                       placeholder="Your comment..."
                     ></textarea>
                   </div>
-                  <div class="mt-2 text-right">
+                  <div className="mt-2 text-right">
                     <button
-                      class="btn btn-primary btn-sm shadow-none"
+                      className="btn btn-primary btn-sm shadow-none"
                       type="submit"
                     >
                       Post comment
@@ -150,4 +164,5 @@ const Details = ({ comment }) => {
     </div>
   );
 };
+
 export default Details;
