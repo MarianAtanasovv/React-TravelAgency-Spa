@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../contexts/authContext";
 import * as countriesService from "../services/countriesService";
 import * as commentService from "../services/commentService";
@@ -9,6 +9,7 @@ import "./details.css";
 import "./likes.css";
 import * as likesService from "../services/likesService";
 import useLocationState from "../hooks/useLocationState";
+// import { Link } from "@material-ui/core";
 
 const Details = ({ comment }) => {
   const { user } = useContext(AuthContext);
@@ -79,6 +80,13 @@ const Details = ({ comment }) => {
       <i className="fa fa-trash"> Delete </i>
     </button>
   );
+  const ownerEdit = (
+    <Link to={`/edit/${locationId}`}>
+      <button className="delete-btn">
+        <i className="fa fa-trash"> Edit </i>
+      </button>
+    </Link>
+  );
 
   return (
     <div>
@@ -123,6 +131,7 @@ const Details = ({ comment }) => {
 
               <p id="total-likes">Likes: {location.likes?.length || 0}</p>
               {user._id === location._ownerId ? ownerDelete : null}
+              {user._id === location._ownerId ? ownerEdit : null}
 
               {comments
                 .filter((x) => x.currenctLocationId == locationId)
@@ -134,7 +143,7 @@ const Details = ({ comment }) => {
                 onSubmit={onCommentCreate}
                 className="commenting-form"
               >
-                <div class="bg-light p-2">
+                <div className="bg-light p-2">
                   <input
                     type="text"
                     name="username"

@@ -1,17 +1,11 @@
+import * as request from "./requester";
 const authUrl = "http://localhost:3030/data";
 
 export const getOne = (locationId) => {
   return fetch(`${authUrl}/locations/${locationId}`).then((res) => res.json());
 };
 
-export const getAllLocations = async () => {
-  let response = await fetch(`${authUrl}/locations`);
-
-  let locations = await response.json();
-
-  let result = Object.values(locations);
-  return result;
-};
+export const getAllLocations = () => request.get(`${authUrl}/locations`);
 
 export const createLocation = async (locationData, token) => {
   let response = await fetch(`${authUrl}/locations`, {
@@ -36,3 +30,6 @@ export const destroy = (locationId, token) => {
     },
   }).then((res) => res.json());
 };
+
+export const edit = (locationId, locationData) =>
+  request.put(`${authUrl}/locations/${locationId}`, locationData);
