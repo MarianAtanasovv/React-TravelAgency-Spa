@@ -34,14 +34,15 @@
 }
 .comment-wrapper{
     
-    margin-left: -150px;
+    margin-left: -380px;
     margin-top: 40px;
 ;
 }
 .commenting-box{
     border: solid 2px gray;
     max-height: 250px;
-    overflow: scroll
+    overflow: scroll;
+    
 }
 .commenting-form{
     margin-left: -12px;

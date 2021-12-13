@@ -56,7 +56,6 @@ const Create = () => {
       .then((result) => {
         navigate("/locations");
         addNotification("You successfully added a location", types.success);
-        console.log("location");
       });
   };
 

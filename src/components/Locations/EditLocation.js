@@ -7,6 +7,10 @@ import * as countriesService from "../../services/countriesService";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import useLocationState from "../../hooks/useLocationState";
+import {
+  useNotificationContext,
+  types,
+} from "../../contexts/NotificationContext";
 
 const EditLocation = () => {
   const { user } = useContext(AuthContext);
@@ -14,6 +18,7 @@ const EditLocation = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const { locationId } = useParams();
   const [location, setLocation] = useLocationState(locationId);
+  const { addNotification } = useNotificationContext();
 
   const locationEditSubmitHandler = (e) => {
     e.preventDefault();
@@ -21,6 +26,7 @@ const EditLocation = () => {
     let locationData = Object.fromEntries(new FormData(e.currentTarget));
 
     countriesService.edit(location._id, locationData);
+    addNotification("You successfully edited a location", types.success);
     navigate("/locations");
   };
 
@@ -80,14 +86,14 @@ const EditLocation = () => {
           </Select>
           <textarea
             type="text"
-            classNameName="description"
+            className="description"
             name="description"
             placeholder="This place is perfect for..."
             defaultValue={location.description}
           />
           <textarea
             type="text"
-            classNameName="exact-address"
+            className="exact-address"
             name="exactAddress"
             placeholder="Peter Dimkov Street..."
             defaultValue={location.exactAddress}
