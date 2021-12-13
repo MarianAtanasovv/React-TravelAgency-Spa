@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../contexts/authContext";
+import { AuthContext } from "../../contexts/authContext";
+import "./header.css";
 
 const Header = () => {
   const { user } = useContext(AuthContext);
 
   let authenticatedArea = (
     <ul id="navigation">
-      <span>Welcome, {user.email}</span>
+      <span className="welcome-span">Welcome, {user.email}</span>
       <li>
         <Link to="/">Home</Link>
       </li>

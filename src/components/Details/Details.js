@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { AuthContext } from "../contexts/authContext";
-import * as countriesService from "../services/countriesService";
-import * as commentService from "../services/commentService";
-import "./comments.css";
-import Comment from "./Comment";
+import { AuthContext } from "../../contexts/authContext";
+import * as countriesService from "../../services/countriesService";
+import * as commentService from "../../services/commentService";
+import "../Comments/comments.css";
+import Comment from "../Comments/Comment";
 import "./details.css";
 import "./likes.css";
-import * as likesService from "../services/likesService";
-import useLocationState from "../hooks/useLocationState";
+import * as likesService from "../../services/likesService";
+import useLocationState from "../../hooks/useLocationState";
 // import { Link } from "@material-ui/core";
 
 const Details = ({ comment }) => {
@@ -108,14 +108,14 @@ const Details = ({ comment }) => {
       <div className="listing-caption section-padding2">
         <div className="details-container">
           <div className="row justify-content-center">
-            <div className="col-lg-8">
+            <div className="description col-lg-8">
               <h3 className="mb-20">Description</h3>
               <p className="mb-30">{location.description}</p>
             </div>
           </div>
 
           <div className="row justify-content-center">
-            <div className="col-lg-8">
+            <div className="address col-lg-8">
               <h3 className="mb-30">Location</h3>
               <p className="mb-30">{location.exactAddress}</p>
 

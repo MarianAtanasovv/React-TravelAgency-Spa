@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import * as countriesService from "../services/countriesService";
-import LocationsCard from "./LocationsCard";
+import * as countriesService from "../../services/countriesService";
+import LocationsCard from "../Locations/LocationsCard";
 import "./locations.css";
 
 const Locations = () => {

@@ -3,13 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { Select, MenuItem } from "@material-ui/core";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
-import * as countriesService from "../services/countriesService";
+import * as countriesService from "../../services/countriesService";
 import { useContext } from "react";
-import { AuthContext } from "../contexts/authContext";
+import { AuthContext } from "../../contexts/authContext";
+import {
+  useNotificationContext,
+  types,
+} from "../../contexts/NotificationContext";
 
 const Create = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { addNotification } = useNotificationContext();
   const [selectedCountry, setSelectedCountry] = useState("");
 
   const selectCountryHandler = (value) => setSelectedCountry(value);
@@ -49,17 +54,19 @@ const Create = () => {
         user.accessToken
       )
       .then((result) => {
-        navigate("/");
+        navigate("/locations");
+        addNotification("You successfully added a location", types.success);
+        console.log("location");
       });
   };
 
   return (
     <div className="form-body-create">
-      <form action="post" onSubmit={onLocationCreate} class="decor">
-        <div class="form-left-decoration"></div>
-        <div class="form-right-decoration"></div>
-        <div class="circle"></div>
-        <div class="form-inner">
+      <form action="post" onSubmit={onLocationCreate} className="decor">
+        <div className="form-left-decoration"></div>
+        <div className="form-right-decoration"></div>
+        <div className="circle"></div>
+        <div className="form-inner">
           <h1>Add a location</h1>
           <input
             type="text"

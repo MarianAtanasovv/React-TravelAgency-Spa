@@ -12,6 +12,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   background-image: url("https://images6.alphacoders.com/830/thumb-1920-830984.jpg");
+
 }
 
 .register-img{
@@ -27,6 +28,7 @@ body {
   background: #FFF;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  margin-top: 200px;
 }
 
 .left {
@@ -136,7 +138,7 @@ input[type="submit"]:active {
   width: 220px;
   height: 36px;
   border: none;
-  border-radius: 2px;button
+  border-radius: 2px;
   color: #FFF;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;

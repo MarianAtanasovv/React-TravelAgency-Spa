@@ -3,10 +3,10 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { Select, MenuItem } from "@material-ui/core";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
-import * as countriesService from "../services/countriesService";
+import * as countriesService from "../../services/countriesService";
 import { useContext } from "react";
-import { AuthContext } from "../contexts/authContext";
-import useLocationState from "../hooks/useLocationState";
+import { AuthContext } from "../../contexts/authContext";
+import useLocationState from "../../hooks/useLocationState";
 
 const EditLocation = () => {
   const { user } = useContext(AuthContext);

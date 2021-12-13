@@ -1,0 +1,22 @@
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+#site-search{
+    margin-top: 100px;
+}
+.list-img{
+    max-height:300px;
+}
+.locationCard{
+    margin-top: 30px;
+   
+}
+body{
+    background-image: linear-gradient(#87d104);
+}

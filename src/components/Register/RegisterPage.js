@@ -1,13 +1,17 @@
-import "../Register/style.css";
-
+import "../Register/register.css";
 import { useContext } from "react";
 import { useNavigate } from "react-router";
 import * as authService from "../../services/authService";
 import { AuthContext } from "../../contexts/authContext";
+import {
+  useNotificationContext,
+  types,
+} from "../../contexts/NotificationContext";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const { addNotification } = useNotificationContext();
 
   const registerSubmitHandler = (e) => {
     e.preventDefault();
@@ -16,8 +20,9 @@ const RegisterPage = () => {
 
     authService.register(email, password).then((authData) => {
       login(authData);
+      addNotification("You registered successfully", types.success);
 
-      navigate("/dashboard");
+      navigate("/");
     });
   };
   return (

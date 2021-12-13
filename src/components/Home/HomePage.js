@@ -7,10 +7,9 @@ const HomePage = () => {
             <div className="col-xl-8 col-lg-9">
               {/* <!-- Hero Caption --> */}
               <div className="hero__caption">
-                <span>Explore the city</span>
+                <span>Explore the world with us</span>
                 <h1>Discover Great Places</h1>
               </div>
-              
             </div>
           </div>
         </div>

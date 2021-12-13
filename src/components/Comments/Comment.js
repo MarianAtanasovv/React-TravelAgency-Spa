@@ -1,8 +1,8 @@
-import * as commentService from "../services/commentService";
+import * as commentService from "../../services/commentService";
 import { useContext, useEffect, useState, React } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../contexts/authContext";
-import * as countriesService from "../services/countriesService";
+import { AuthContext } from "../../contexts/authContext";
+import * as countriesService from "../../services/countriesService";
 
 const Comment = ({ comment }) => {
   const { user } = useContext(AuthContext);
