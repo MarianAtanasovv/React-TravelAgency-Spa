@@ -16,12 +16,12 @@ import CreateLocation from "./components/Locations/CreateLocation";
 import Details from "./components/Details/Details";
 import Locations from "./components/Locations/Locations";
 import EditLocation from "./components/Locations/EditLocation";
-import Comment from "./components/Comments/Comment";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { NotificationProvider } from "./contexts/NotificationContext";
 import Notification from "./components/common/Notification";
-import FavouritedLocations from "./components/UserProfile/FavouritedLocations";
+import FavouritedLocationsList from "./components/UserProfile/FavouritedLocationsList";
 import UserProfile from "./components/UserProfile/UserProfile";
+import CreatedLocationsList from "./components/UserProfile/CreatedLocationsList";
 
 const initialAuthState = {
   _id: "",
@@ -63,6 +63,14 @@ function App() {
               <Route path="/create-location" element={<CreateLocation />} />
               <Route path="/locations" element={<Locations />} />
               <Route path="/details/:locationId" element={<Details />} />
+              <Route
+                path="/user-profile/favourite-locations"
+                element={<FavouritedLocationsList />}
+              />
+              <Route
+                path="/user-profile/created-locations"
+                element={<CreatedLocationsList />}
+              />
             </Routes>
           </main>
           <footer>

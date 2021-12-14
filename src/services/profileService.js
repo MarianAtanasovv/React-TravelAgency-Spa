@@ -1,7 +1,7 @@
 import * as request from "./requester";
 const baseUrl = "http://localhost:3030/data";
 
-export const addLocationToUser = async (location, token) => {
+export const addLikedLocation = async (location, token) => {
   let response = await fetch(`${baseUrl}/favourites`, {
     method: "POST",
     headers: {
@@ -15,7 +15,10 @@ export const addLocationToUser = async (location, token) => {
 
   return result;
 };
-export const getAll = () => request.get(`${baseUrl}/favourites`);
+
+export const getAllLocations = () => request.get(`${baseUrl}/locations`);
+
+export const getAllFavourites = () => request.get(`${baseUrl}/favourites`);
 
 export const destroy = (locationId, token) => {
   return fetch(`${baseUrl}/favourites/${locationId}`, {

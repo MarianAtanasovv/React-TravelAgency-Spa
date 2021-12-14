@@ -1,5 +1,5 @@
 import * as commentService from "../../services/commentService";
-import { useContext, useEffect, useState, React } from "react";
+import { useContext, useEffect, useState, React, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import * as countriesService from "../../services/countriesService";
@@ -7,30 +7,28 @@ import ConfirmDialog from "../common/ConfirmDialog";
 
 const Comment = ({ comment }) => {
   const { user } = useContext(AuthContext);
-  let [pastComment, setComment] = useState({});
-  let { locationName, locationId } = useParams();
-  const [location, setLocation] = useState({});
+  let [pastComment, setComment] = useState([]);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   useEffect(() => {
-    countriesService.getOne(locationId).then((locationResult) => {
-      setLocation(locationResult);
-    });
-  }, [locationId]);
-
-  useEffect(() => {
-    commentService.getOne(comment._id).then((result) => {
+    commentService.getAll().then((result) => {
       setComment(result);
     });
-  }, [comment._id]);
+  }, []);
 
-  const deleteHandlerComment = (e) => {
+  const deleteHandlerComment = (_id) => (e) => {
     e.preventDefault();
 
-    commentService.destroy(comment._id, user.accessToken).finally(() => {
-      setShowDeleteDialog(false);
-    });
+    commentService
+      .destroy(comment._id, user.accessToken)
+      .then((result) => {
+        setComment((state) => state.filter((x) => x._id !== _id));
+      })
+      .finally(() => {
+        setShowDeleteDialog(false);
+      });
   };
+
   const deleteClickHandler = (e) => {
     e.preventDefault();
     setShowDeleteDialog(true);
@@ -51,7 +49,7 @@ const Comment = ({ comment }) => {
       <ConfirmDialog
         show={showDeleteDialog}
         onClose={() => setShowDeleteDialog(false)}
-        onSave={deleteHandlerComment}
+        onSave={deleteHandlerComment(comment._id)}
       />
       <div className="comment-wrapper">
         <div className="d-flex justify-content-center row">

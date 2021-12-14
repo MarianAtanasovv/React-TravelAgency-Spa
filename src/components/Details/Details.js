@@ -16,9 +16,8 @@ import {
 } from "../../contexts/NotificationContext";
 import * as profileService from "../../services/profileService";
 
-const Details = ({ comment }) => {
+const Details = (comment) => {
   const { user } = useContext(AuthContext);
-
   const navigate = useNavigate();
   const [comments, setComments] = useState([]);
 
@@ -32,8 +31,7 @@ const Details = ({ comment }) => {
       setLocation((state) => ({ ...state, likes }));
     });
   }, []);
-  
-  console.log(location);
+
   useEffect(() => {
     commentService.getAll().then((commentResult) => {
       setComments(commentResult);
@@ -48,10 +46,9 @@ const Details = ({ comment }) => {
 
   const deleteHandler = (e) => {
     e.preventDefault();
-
     countriesService
       .destroy(locationId, user.accessToken)
-      .then(() => {
+      .then((result) => {
         navigate("/");
       })
       .finally(() => {
@@ -69,14 +66,14 @@ const Details = ({ comment }) => {
       return;
     }
 
-    // if (location.likes.includes(user._id)) {
-    //   addNotification("You cannot like again");
-    //   return;
-    // }
+    if (location.likes?.includes(user._id)) {
+      addNotification("You cannot like again");
+      return;
+    }
 
     likesService.like(user._id, locationId).then(() => {
       setLocation((state) => ({ ...state, likes: [...state.likes, user._id] }));
-      profileService.addLocationToUser(user._id, location, user.accessToken);
+      profileService.addLikedLocation(user._id, location, user.accessToken);
     });
   };
 
@@ -155,7 +152,7 @@ const Details = ({ comment }) => {
                   <input
                     type="image"
                     onClick={likeButtonClick}
-                    // disabled={location.likes?.includes(user._id)}
+                    disabled={location.likes?.includes(user._id)}
                     className="details-heart"
                     src="https://i.natgeofe.com/k/7bfcf2d2-542e-44f0-962a-c36f2efa98a5/heart.jpg"
                   />
@@ -170,6 +167,7 @@ const Details = ({ comment }) => {
                   .map((x) => (
                     <Comment key={x._id} comment={x} />
                   ))}
+
                 <form
                   method="POST"
                   onSubmit={onCommentCreate}

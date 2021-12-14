@@ -168,7 +168,9 @@
   table {
     width: 100%;
   }
-  
+  .row{
+    margin-top: 100px
+  }
   th, td {
     font-weight: unset;
     padding-right: 10px;

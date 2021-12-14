@@ -34,7 +34,7 @@
 }
 .comment-wrapper{
     
-    margin-left: -380px;
+    /* margin-left: -380px; */
     margin-top: 40px;
 ;
 }
@@ -42,6 +42,8 @@
     border: solid 2px gray;
     max-height: 250px;
     overflow: scroll;
+    max-width: 500px;
+    margin-left: -120px;
     
 }
 .commenting-form{
