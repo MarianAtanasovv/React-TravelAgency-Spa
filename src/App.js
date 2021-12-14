@@ -20,6 +20,8 @@ import Comment from "./components/Comments/Comment";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { NotificationProvider } from "./contexts/NotificationContext";
 import Notification from "./components/common/Notification";
+import FavouritedLocations from "./components/UserProfile/FavouritedLocations";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 const initialAuthState = {
   _id: "",
@@ -57,18 +59,10 @@ function App() {
               <Route path="/login-page" element={<LoginPage />} />
               <Route path="/logout" element={<LogoutPage />} />
               <Route path="/edit/:locationId" element={<EditLocation />} />
-
+              <Route path="/user-profile" element={<UserProfile />} />
               <Route path="/create-location" element={<CreateLocation />} />
               <Route path="/locations" element={<Locations />} />
-
-              <Route
-                path="/details/:locationId"
-                element={
-                  <>
-                    <Details />
-                  </>
-                }
-              />
+              <Route path="/details/:locationId" element={<Details />} />
             </Routes>
           </main>
           <footer>

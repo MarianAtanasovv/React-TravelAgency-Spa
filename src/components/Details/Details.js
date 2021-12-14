@@ -14,6 +14,7 @@ import {
   useNotificationContext,
   types,
 } from "../../contexts/NotificationContext";
+import * as profileService from "../../services/profileService";
 
 const Details = ({ comment }) => {
   const { user } = useContext(AuthContext);
@@ -31,7 +32,8 @@ const Details = ({ comment }) => {
       setLocation((state) => ({ ...state, likes }));
     });
   }, []);
-
+  
+  console.log(location);
   useEffect(() => {
     commentService.getAll().then((commentResult) => {
       setComments(commentResult);
@@ -74,6 +76,7 @@ const Details = ({ comment }) => {
 
     likesService.like(user._id, locationId).then(() => {
       setLocation((state) => ({ ...state, likes: [...state.likes, user._id] }));
+      profileService.addLocationToUser(user._id, location, user.accessToken);
     });
   };
 

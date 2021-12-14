@@ -32,6 +32,11 @@ const Header = () => {
       </li>
 
       <li className="logout">
+        <Link to="/user-profile">
+          <i className="ti-user"></i> Profile
+        </Link>
+      </li>
+      <li className="logout">
         <Link to="/logout">
           <i className="ti-user"></i> Logout
         </Link>
