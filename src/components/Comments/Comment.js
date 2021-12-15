@@ -38,12 +38,28 @@ const Comment = ({ comment, onDelete }) => {
         onSave={onDeleteConfirmed}
       />
 
-      <div className="mt-2">
-        <p className="comment-text">{comment.comment}</p>
-      </div>
+      <div className="comment-wrapper">
+        <div className="d-flex justify-content-center row">
+          <div className="col-md-8">
+            <div className="commenting-box" id="commenting-box">
+              <div className="bg-white p-2">
+                <div className="d-flex flex-column justify-content-start ml-2">
+                  <span className="d-block font-weight-bold name">
+                    {user.email}
+                  </span>
+                </div>
+              </div>
 
-      <div className="mt-2 text-right">
-        {user._id == comment._ownerId ? ownerDelete : null}
+              <div className="mt-2">
+                <p className="comment-text">{comment.comment}</p>
+              </div>
+
+              <div className="mt-2 text-right">
+                {user._id == comment._ownerId ? ownerDelete : null}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
