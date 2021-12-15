@@ -15,10 +15,20 @@ const ConfirmDialog = ({ show, onClose, onSave }) => {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary" onClick={onClose}>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            onClose();
+          }}
+        >
           Close
         </Button>
-        <Button variant="primary" onClick={onSave}>
+        <Button
+          variant="primary"
+          onClick={() => {
+            onSave();
+          }}
+        >
           Delete
         </Button>
       </Modal.Footer>

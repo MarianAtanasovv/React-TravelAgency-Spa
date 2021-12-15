@@ -13,7 +13,7 @@ const UserProfile = () => {
     <div className="row">
       <div className="listing-details-area">
         <div className="container">
-          <div className="row">
+          <div className="fav row">
             <FavouritedLocationsCard></FavouritedLocationsCard>
             <CreatedLocationsCard></CreatedLocationsCard>
           </div>
