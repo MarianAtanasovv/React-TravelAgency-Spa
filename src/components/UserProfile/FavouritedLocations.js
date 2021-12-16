@@ -10,11 +10,9 @@ const FavouritedLocations = ({ location }) => {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const navigate = useNavigate();
 
-  const deleteHandler = (e) => {
-    e.preventDefault();
-
+  const deleteHandler = () => {
     profileService
-      .destroy(location._id, user.accessToken)
+      .destroyFavourite(location._id, user.accessToken)
       .then(() => {
         navigate("/");
       })

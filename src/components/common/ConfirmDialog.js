@@ -3,7 +3,7 @@ import "./confirmDialog.css";
 
 const ConfirmDialog = ({ show, onClose, onSave }) => {
   return (
-    <Modal show={show} onHide={onClose}>
+    <Modal show={show} onHide={() => onClose()}>
       <Modal.Header closeButton>
         <Modal.Title>
           <h3 className="modal-warning">Warning</h3>

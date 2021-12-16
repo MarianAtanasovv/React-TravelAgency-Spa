@@ -64,20 +64,22 @@ const Details = () => {
 
   const likeButtonClick = (e) => {
     if (user._id === location._ownerId) {
+      addNotification("You cannot like your own location", types.warn);
       return;
     }
 
-    const currentLike = like.find((x) => x._ownerId == user._id);
-    if (currentLike._ownerId == user._id) {
+    const currentLike = like?.find((x) => x._ownerId == user._id);
+    if (currentLike?._ownerId == user._id) {
       addNotification("You cannot like again", types.warn);
-      console.log("cant");
       return;
     }
 
     likesService.like(user._id, locationId).then((res) => {
       setLike((state) => [...state, res]);
 
-      profileService.addLikedLocation(user._id, location, user.accessToken);
+      profileService.addLikedLocation(location, user.accessToken).then(() => {
+        addNotification("Location added to favourites", types.success);
+      });
     });
   };
 

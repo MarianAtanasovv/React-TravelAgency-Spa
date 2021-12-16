@@ -40,7 +40,7 @@ const LoginPage = () => {
           <h1>Sign in</h1>
 
           <input type="text" name="email" placeholder="Email" />
-          {/* <input type="text" name="email" placeholder="E-mail" /> */}
+         
           <input type="password" name="password" placeholder="Password" />
           <input
             type="password"

@@ -12,8 +12,8 @@ const useLocationState = (locationId) => {
   }, []);
 
   useEffect(() => {
-    locationService.getOne(locationId).then((locationResult) => {
-      setLocation(locationResult);
+    locationService.getOne(locationId, controller.signal).then((res) => {
+      setLocation(res);
     });
 
     return () => {

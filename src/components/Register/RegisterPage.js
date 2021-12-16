@@ -1,5 +1,5 @@
 import "../Register/register.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import * as authService from "../../services/authService";
 import { AuthContext } from "../../contexts/authContext";
@@ -7,45 +7,90 @@ import {
   useNotificationContext,
   types,
 } from "../../contexts/NotificationContext";
+import { Alert } from "react-bootstrap";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const [errors, setErrors] = useState({ name: false });
+
   const { addNotification } = useNotificationContext();
 
   const registerSubmitHandler = (e) => {
     e.preventDefault();
 
-    let { email, password } = Object.fromEntries(new FormData(e.currentTarget));
+    let { email, password, confirmPassword } = Object.fromEntries(
+      new FormData(e.currentTarget)
+    );
+    if (password != confirmPassword) {
+      passwordChecker(e);
 
-    authService.register(email, password).then((authData) => {
-      login(authData);
-      addNotification("You registered successfully", types.success);
+      return;
+    }
 
-      navigate("/");
-    });
+    authService
+      .register(email, password)
+      .then((authData) => {
+        if (!authData.ok) {
+          throw Error(authData.message);
+        }
+        if (authData.code == 409) {
+          emailTaken();
+          return;
+        }
+        login(authData);
+        addNotification("You registered successfully", types.success);
+
+        navigate("/");
+      })
+      .catch((err) => {});
   };
+
+  const passwordChecker = (e) => {
+    setErrors((state) => ({
+      ...state,
+      name: "Passwords should match!",
+    }));
+  };
+
+  const emailTaken = (e) => {
+    setErrors(
+      (state) => ({
+        ...state,
+        name: "Email taken!",
+      }),
+      setTimeout(() => {}, 3000)
+    );
+  };
+
   return (
     <div>
       <div id="login-box">
-        <div class="left">
+        <div className="left">
           <h1>Sign up</h1>
-          <form method="POST" onSubmit={registerSubmitHandler}>
+          <form
+            method="POST"
+            onSubmit={emailTaken}
+            onSubmit={passwordChecker}
+            onSubmit={registerSubmitHandler}
+          >
             <input type="text" name="email" placeholder="E-mail" />
             <input type="password" name="password" placeholder="Password" />
             <input
               type="password"
-              name="password2"
+              name="confirmPassword"
               placeholder="Retype password"
             />
-
+            <Alert className="alert-box" variant="danger" show={errors.name}>
+              {errors.name}
+            </Alert>
             <input type="submit" name="signup_submit" value="Sign me up" />
           </form>
         </div>
 
-        <div class="right">
+        <div className="right">
           <img
-            class="register-img"
+            className="register-img"
             src="https://thepointsguy.global.ssl.fastly.net/uk/originals/2020/10/GettyImages-1170100071.jpg"
           ></img>
         </div>

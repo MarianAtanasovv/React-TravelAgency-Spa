@@ -14,6 +14,8 @@ const Locations = () => {
     });
   }, []);
 
+
+  
   return (
     <div className="listing-area pt-120 pb-120">
       <div className="container">
@@ -24,9 +26,8 @@ const Locations = () => {
             name="q"
             aria-label="Search through site content"
             onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search"
           />
-
-          <button>Search</button>
         </div>
         <div className="row">
           <div className="listing-details-area">

@@ -5,6 +5,7 @@ import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import * as countriesService from "../../services/countriesService";
 import { useContext } from "react";
+import * as profileService from "../../services/profileService";
 import { AuthContext } from "../../contexts/authContext";
 import {
   useNotificationContext,
@@ -57,6 +58,10 @@ const Create = () => {
         navigate("/locations");
         addNotification("You successfully added a location", types.success);
       });
+   
+    // profileService.getAllLocations().then(() => {
+    //   addNotification("Location added to favourites", types.success);
+    // });
   };
 
   return (
