@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/authContext";
 import * as countriesService from "../../services/countriesService";
 import * as commentService from "../../services/commentService";
 import "../Comments/comments.css";
-import Comment from "../Comments/Comment";
+import Comments from "../Comments/Comments";
 import "./details.css";
 import "./likes.css";
 import * as likesService from "../../services/likesService";
@@ -16,19 +16,21 @@ import {
 } from "../../contexts/NotificationContext";
 import * as profileService from "../../services/profileService";
 
-const Details = (comment) => {
+const Details = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [comments, setComments] = useState([]);
 
   const { locationId } = useParams();
-  const [location, setLocation] = useLocationState(locationId);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const { addNotification } = useNotificationContext();
+  const [comment, setComments] = useState([]);
+  const [like, setLike] = useState([]);
+  const [location, setLocation] = useLocationState(locationId);
 
   useEffect(() => {
-    likesService.getLocationsLikes(locationId).then((likes) => {
-      setLocation((state) => ({ ...state, likes }));
+    likesService.getLocationsLikes(locationId).then((likesResult) => {
+      setLike(likesResult);
+      setLike((state) => state.filter((x) => x.locationId == locationId));
     });
   }, []);
 
@@ -44,8 +46,7 @@ const Details = (comment) => {
     });
   }, [locationId]);
 
-  const deleteHandler = (e) => {
-    e.preventDefault();
+  const deleteHandler = () => {
     countriesService
       .destroy(locationId, user.accessToken)
       .then((result) => {
@@ -61,41 +62,23 @@ const Details = (comment) => {
     setShowDeleteDialog(true);
   };
 
-  const likeButtonClick = () => {
+  const likeButtonClick = (e) => {
     if (user._id === location._ownerId) {
       return;
     }
 
-    if (location.likes?.includes(user._id)) {
-      addNotification("You cannot like again");
+    const currentLike = like.find((x) => x._ownerId == user._id);
+    if (currentLike._ownerId == user._id) {
+      addNotification("You cannot like again", types.warn);
+      console.log("cant");
       return;
     }
 
-    likesService.like(user._id, locationId).then(() => {
-      setLocation((state) => ({ ...state, likes: [...state.likes, user._id] }));
+    likesService.like(user._id, locationId).then((res) => {
+      setLike((state) => [...state, res]);
+
       profileService.addLikedLocation(user._id, location, user.accessToken);
     });
-  };
-
-  const onCommentCreate = (e) => {
-    e.preventDefault();
-    let formData = new FormData(e.currentTarget);
-    let username = formData.get("username");
-    let comment = formData.get("comment");
-    let currenctLocationId = locationId;
-
-    commentService
-      .create(
-        {
-          username,
-          comment,
-          currenctLocationId,
-        },
-        user.accessToken
-      )
-      .then((result) => {
-        setComments((comment) => [...comment, result]);
-      });
   };
 
   const ownerDelete = (
@@ -147,55 +130,18 @@ const Details = (comment) => {
               <div className="address col-lg-8">
                 <h3 className="mb-30">Location</h3>
                 <p className="mb-30">{location.exactAddress}</p>
+                <input
+                  type="image"
+                  onClick={likeButtonClick}
+                  disabled={like?.includes(user._id)}
+                  className="details-heart"
+                  src="https://i.natgeofe.com/k/7bfcf2d2-542e-44f0-962a-c36f2efa98a5/heart.jpg"
+                />
 
-                <div>
-                  <input
-                    type="image"
-                    onClick={likeButtonClick}
-                    disabled={location.likes?.includes(user._id)}
-                    className="details-heart"
-                    src="https://i.natgeofe.com/k/7bfcf2d2-542e-44f0-962a-c36f2efa98a5/heart.jpg"
-                  />
-                </div>
-
-                <p id="total-likes">Likes: {location.likes?.length || 0}</p>
+                <p id="total-likes">Likes: {like.length}</p>
                 {user._id === location._ownerId ? ownerDelete : null}
                 {user._id === location._ownerId ? ownerEdit : null}
-
-                {comments
-                  .filter((x) => x.currenctLocationId == locationId)
-                  .map((x) => (
-                    <Comment key={x._id} comment={x} />
-                  ))}
-
-                <form
-                  method="POST"
-                  onSubmit={onCommentCreate}
-                  className="commenting-form"
-                >
-                  <div className="bg-light p-2">
-                    <input
-                      type="text"
-                      name="username"
-                      placeholder="Your username"
-                    />
-                    <div className="d-flex flex-row align-items-start">
-                      <textarea
-                        className="form-control ml-1 shadow-none textarea"
-                        name="comment"
-                        placeholder="Your comment..."
-                      ></textarea>
-                    </div>
-                    <div className="mt-2 text-right">
-                      <button
-                        className="btn btn-primary btn-sm shadow-none"
-                        type="submit"
-                      >
-                        Post comment
-                      </button>
-                    </div>
-                  </div>
-                </form>
+                <Comments />
               </div>
             </div>
           </div>
