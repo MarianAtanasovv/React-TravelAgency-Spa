@@ -8,13 +8,7 @@ export const login = async (email, password) => {
     body: JSON.stringify({ email, password }),
   });
 
-  let jsonResult = await res.json();
-
-  if (res.ok) {
-    return jsonResult;
-  } else {
-    throw jsonResult;
-  }
+  return await res.json();
 };
 export const register = (email, password) => {
   return fetch(`${baseUrl}/users/register`, {

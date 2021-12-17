@@ -8,6 +8,7 @@ import {
   types,
 } from "../../contexts/NotificationContext";
 import { Alert } from "react-bootstrap";
+import * as validationHelper from "../common/ValidationHelper";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -15,6 +16,14 @@ const RegisterPage = () => {
   const [errors, setErrors] = useState({ name: false });
 
   const { addNotification } = useNotificationContext();
+  const timeout = () => {
+    setTimeout(() => {
+      setErrors((state) => ({
+        ...state,
+        name: "",
+      }));
+    }, 2000);
+  };
 
   const registerSubmitHandler = (e) => {
     e.preventDefault();
@@ -22,8 +31,25 @@ const RegisterPage = () => {
     let { email, password, confirmPassword } = Object.fromEntries(
       new FormData(e.currentTarget)
     );
+
     if (password != confirmPassword) {
-      passwordChecker(e);
+      setErrors((state) => ({
+        ...state,
+        name: "Passwords should match!",
+      }));
+
+      timeout();
+
+      return;
+    }
+
+    if (password == "" || confirmPassword == "" || email == "") {
+      setErrors((state) => ({
+        ...state,
+        name: "Fields can't be empty!",
+      }));
+
+      timeout();
 
       return;
     }
@@ -31,13 +57,19 @@ const RegisterPage = () => {
     authService
       .register(email, password)
       .then((authData) => {
+        if (authData.code == 409) {
+          setErrors((state) => ({
+            ...state,
+            name: "Email taken",
+          }));
+
+          timeout();
+          return;
+        }
         if (!authData.ok) {
           throw Error(authData.message);
         }
-        if (authData.code == 409) {
-          emailTaken();
-          return;
-        }
+
         login(authData);
         addNotification("You registered successfully", types.success);
 
@@ -46,34 +78,12 @@ const RegisterPage = () => {
       .catch((err) => {});
   };
 
-  const passwordChecker = (e) => {
-    setErrors((state) => ({
-      ...state,
-      name: "Passwords should match!",
-    }));
-  };
-
-  const emailTaken = (e) => {
-    setErrors(
-      (state) => ({
-        ...state,
-        name: "Email taken!",
-      }),
-      setTimeout(() => {}, 3000)
-    );
-  };
-
   return (
     <div>
       <div id="login-box">
         <div className="left">
           <h1>Sign up</h1>
-          <form
-            method="POST"
-            onSubmit={emailTaken}
-            onSubmit={passwordChecker}
-            onSubmit={registerSubmitHandler}
-          >
+          <form method="POST" onSubmit={registerSubmitHandler}>
             <input type="text" name="email" placeholder="E-mail" />
             <input type="password" name="password" placeholder="Password" />
             <input
