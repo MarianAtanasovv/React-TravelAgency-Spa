@@ -69,7 +69,9 @@ const Details = () => {
     }
 
     const currentLike = like?.find((x) => x._ownerId == user._id);
+
     if (currentLike?._ownerId == user._id) {
+
       addNotification("You cannot like again", types.warn);
       return;
     }

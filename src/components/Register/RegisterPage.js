@@ -57,17 +57,17 @@ const RegisterPage = () => {
     authService
       .register(email, password)
       .then((authData) => {
-        if (authData.code == 409) {
-          setErrors((state) => ({
-            ...state,
-            name: "Email taken",
-          }));
-
-          timeout();
-          return;
-        }
         if (!authData.ok) {
-          throw Error(authData.message);
+          if (authData.code == 409) {
+            setErrors((state) => ({
+              ...state,
+              name: "Email taken",
+            }));
+
+            timeout();
+            throw Error(authData.message);
+          }
+         
         }
 
         login(authData);

@@ -53,6 +53,7 @@ const LoginPage = () => {
 
       return;
     }
+
     if (!validationHelper.passwordValidator(password, confirmPassword)) {
       setErrors((state) => ({
         ...state,
@@ -64,27 +65,26 @@ const LoginPage = () => {
     authService
       .login(email, password)
       .then((authData) => {
-        if (authData.code == 403) {
-          setErrors((state) => ({
-            ...state,
-            name: "Wrong credentials!",
-          }));
-
-          timeout();
-          return;
-        }
         if (!authData.ok) {
-          throw Error(authData.message);
+          if (authData.code == 403) {
+            setErrors((state) => ({
+              ...state,
+              name: "Wrong credentials!",
+            }));
+
+            timeout();
+            throw Error(authData.message);
+          }
+        } else {
+          login(authData);
+
+          addNotification("You logged in successfully!", types.success);
+
+          navigate("/locations");
         }
-
-        login(authData);
-
-        addNotification("You logged in successfully!", types.success);
-
-        navigate("/locations");
       })
       .catch((error) => {
-        // TODO: notification
+        console.log(error);
       });
   };
 

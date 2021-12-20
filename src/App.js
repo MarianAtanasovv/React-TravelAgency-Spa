@@ -3,9 +3,6 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import HomePage from "./components/Home/HomePage";
 import AboutUs from "./components/AboutUs/AboutUs";
-import Categories from "./components/Categories/Categories";
-import HowItWorks from "./components/HowItWorks";
-import News from "./components/News";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import RegisterPage from "./components/Register/RegisterPage";
@@ -52,9 +49,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route path="/how-it-works" element={<HowItWorks />} />
-              <Route path="/news" element={<News />} />
+
               <Route path="/register-page" element={<RegisterPage />} />
               <Route path="/login-page" element={<LoginPage />} />
               <Route path="/logout" element={<LogoutPage />} />

@@ -5,14 +5,14 @@ const FavouritedLocations = () => {
       <div className="single-listing mb-30">
         <div className="list-img">
           <img
-            src="https://i2.wp.com/lilioftheworld.com/wp-content/uploads/2021/02/Panorama-Night-view.jpg?resize=960%2C720&ssl=1"
+            src="http://www.simpleimageresizer.com/_uploads/photos/b2fc7b42/pexels-photo-2486168_400x300.jpeg"
             alt=""
           />
         </div>
         <div className="list-caption">
           <h3>
             <Link className="button" to={"/user-profile/favourite-locations"}>
-              Your liked locations
+              Your favourite locations
             </Link>
           </h3>
           <p></p>

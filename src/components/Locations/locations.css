@@ -9,6 +9,9 @@ label {
 }
 #site-search{
     margin-top: 100px;
+    border-radius: 10px;
+    text-align: center;
+  
 }
 .list-img{
     max-height:300px;
