@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as profileService from "../../services/profileService";
 import ConfirmDialog from "../common/ConfirmDialog";
+import { Link } from "react-router-dom";
 
 const CreatedLocations = ({ location }) => {
   const { user } = useContext(AuthContext);
@@ -39,19 +40,21 @@ const CreatedLocations = ({ location }) => {
             <tbody>
               <tr className="row100 body">
                 <td className="cell100 column1">
+                  <div className="button-holder">
+                    <Link to={`/edit/${location._id}`}>
+                      <button className="delete-btn">
+                        <i class="far fa-edit">Edit</i>
+                      </button>
+                    </Link>
+                    <button className="delete-btn" onClick={deleteClickHandler}>
+                      <i class="far fa-trash-alt">Delete</i>
+                    </button>
+                  </div>
                   <img className="column-img" src={location.img}></img>
                 </td>
                 <td className="cell100 column2">{location.name}</td>
                 <td className="cell100 column3">{location.description}</td>
-                <td className="cell100 column4">
-                  {location.country}
-                  <button
-                    className="delete-favourite-btn"
-                    onClick={deleteClickHandler}
-                  >
-                    <i className="fas fa-times-circle"></i>
-                  </button>
-                </td>
+                <td className="cell100 column4">{location.country}</td>
               </tr>
             </tbody>
           </table>

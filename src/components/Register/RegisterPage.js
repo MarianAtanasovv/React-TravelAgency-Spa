@@ -32,7 +32,16 @@ const RegisterPage = () => {
       new FormData(e.currentTarget)
     );
 
-    if (password != confirmPassword) {
+    if (password.length < 6 || confirmPassword.length < 6) {
+      setErrors((state) => ({
+        ...state,
+        name: "Password can't be less 6 symbols!",
+      }));
+
+      timeout();
+
+      return;
+    } else if (password != confirmPassword) {
       setErrors((state) => ({
         ...state,
         name: "Passwords should match!",
@@ -41,9 +50,7 @@ const RegisterPage = () => {
       timeout();
 
       return;
-    }
-
-    if (password == "" || confirmPassword == "" || email == "") {
+    } else if (password == "" || confirmPassword == "" || email == "") {
       setErrors((state) => ({
         ...state,
         name: "Fields can't be empty!",
@@ -67,7 +74,6 @@ const RegisterPage = () => {
             timeout();
             throw Error(authData.message);
           }
-         
         }
 
         login(authData);

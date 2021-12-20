@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
-import * as countriesService from "../../services/countriesService";
+import * as countriesService from "../../services/locationService";
 import * as commentService from "../../services/commentService";
 import "../Comments/comments.css";
 import Comments from "../Comments/Comments";
@@ -67,13 +67,14 @@ const Details = () => {
       addNotification("You cannot like your own location", types.warn);
       return;
     }
+    if (like?.length > 0) {
+      const currentLike = like?.find((x) => x._ownerId == user._id);
 
-    const currentLike = like?.find((x) => x._ownerId == user._id);
-
-    if (currentLike?._ownerId == user._id) {
-
-      addNotification("You cannot like again", types.warn);
-      return;
+      if (currentLike?._ownerId == user._id) {
+       
+        addNotification("You cannot like again", types.warn);
+        return;
+      }
     }
 
     likesService.like(user._id, locationId).then((res) => {

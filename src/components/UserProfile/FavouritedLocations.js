@@ -39,19 +39,14 @@ const FavouritedLocations = ({ location }) => {
             <tbody>
               <tr class="row100 body">
                 <td class="cell100 column1">
+                  <button className="delete-btn" onClick={deleteClickHandler}>
+                    <i class="far fa-trash-alt">Delete</i>
+                  </button>
                   <img className="column-img" src={location.img}></img>
                 </td>
                 <td class="cell100 column2">{location.name}</td>
                 <td class="cell100 column3">{location.description}</td>
-                <td class="cell100 column4">
-                  {location.country}
-                  <button
-                    className="delete-favourite-btn"
-                    onClick={deleteClickHandler}
-                  >
-                    <i className="fas fa-times-circle"></i>
-                  </button>
-                </td>
+                <td class="cell100 column4">{location.country}</td>
               </tr>
             </tbody>
           </table>

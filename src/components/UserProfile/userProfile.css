@@ -1,5 +1,9 @@
-
-
+.locations-ref{
+  border: solid black 2px;
+  border-radius: 12px;
+  margin-top: 20px;
+  padding: 5px;
+}
 
   * {
       margin: 0px; 
@@ -196,6 +200,7 @@
   }
   #cell100 column4{
     padding-left: 100px;
+    
   }
   
   .column5 {
@@ -3132,7 +3137,9 @@
 	-o-flex-direction: row-reverse;
 	flex-direction: row-reverse;
 }
-
+tr{
+  border-bottom: 1px solid black;
+}
 .flex-col {
 	display: -webkit-box;
 	display: -webkit-flex;

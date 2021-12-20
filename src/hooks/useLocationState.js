@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 
-import * as locationService from "../services/countriesService";
+import * as locationService from "../services/locationService";
 
 const useLocationState = (locationId) => {
   const [location, setLocation] = useState({});

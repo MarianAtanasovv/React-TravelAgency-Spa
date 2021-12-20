@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Select, MenuItem } from "@material-ui/core";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
-import * as countriesService from "../../services/countriesService";
+import * as countriesService from "../../services/locationService";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import {

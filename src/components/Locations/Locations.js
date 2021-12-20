@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import * as countriesService from "../../services/countriesService";
+import * as countriesService from "../../services/locationService";
 import LocationsCard from "../Locations/LocationsCard";
 import "./locations.css";
 
