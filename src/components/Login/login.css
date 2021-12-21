@@ -11,7 +11,7 @@ body {
   color: #222;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  background-image: url("https://images6.alphacoders.com/830/thumb-1920-830984.jpg");
+  background-image: linear-gradient(to right, #863794, #da2f75, #ff623e, #eea900, #a8eb12);
 
 }
 

@@ -2475,7 +2475,8 @@ hr {
 }
 
 .header-area {
-	border-bottom: 1px solid #144674
+	border-bottom: 1px solid #144674;
+	color:black !important
 }
 
 .header-area .header-bottom {
@@ -2515,7 +2516,8 @@ hr {
 .header-area .main-header .main-menu ul li {
 	display: inline-block;
 	position: relative;
-	z-index: 1
+	z-index: 1;
+	color: black !important
 }
 
 .header-area .main-header .main-menu ul li a {
@@ -2523,6 +2525,7 @@ hr {
 	font-weight: 500;
 	padding: 39px 27px;
 	display: block;
+	color:white;
 	font-size: 16px;
 	-webkit-transition: all .3s ease-out 0s;
 	-moz-transition: all .3s ease-out 0s;
@@ -3001,7 +3004,7 @@ hr {
 	background-color: rgba(0, 0, 50, 0.7);
 	width: 100%;
 	height: 100%;
-	left: 0;
+	left: 0;	
 	top: 0;
 	bottom: 0;
 	right: 0;
@@ -3014,7 +3017,13 @@ hr {
 	top: 0;
 	right: 0;
 	left: 0;
-	z-index: 9
+	z-index: 9;
+	background-color: #000D21;
+	color: black
+	
+}
+.navigation{
+	
 }
 
 .hero-area2 {
@@ -4490,7 +4499,8 @@ form.search-box2 .search-form a {
 .footer-area {
 	background-image: url(../img/gallery/footer_bg.jpg);
 	background-size: cover;
-	background-repeat: no-repeat
+	background-repeat: no-repeat;
+	height: 50%;
 }
 
 .footer-area .footer-logo {

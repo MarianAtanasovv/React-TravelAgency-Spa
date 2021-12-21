@@ -71,7 +71,6 @@ const Details = () => {
       const currentLike = like?.find((x) => x._ownerId == user._id);
 
       if (currentLike?._ownerId == user._id) {
-       
         addNotification("You cannot like again", types.warn);
         return;
       }
@@ -126,7 +125,7 @@ const Details = () => {
           <div className="details-container">
             <div className="row justify-content-center">
               <div className="description col-lg-8">
-                <h3 className="mb-20">Description</h3>
+                <h3 className="mb-20">My story</h3>
                 <p className="mb-30">{location.description}</p>
               </div>
             </div>
