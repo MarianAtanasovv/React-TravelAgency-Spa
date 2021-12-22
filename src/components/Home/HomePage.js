@@ -5,7 +5,6 @@ const HomePage = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xl-8 col-lg-9">
-              {/* <!-- Hero Caption --> */}
               <div className="hero__caption">
                 <span>Explore the world with us</span>
                 <h1>Discover Great Places</h1>
