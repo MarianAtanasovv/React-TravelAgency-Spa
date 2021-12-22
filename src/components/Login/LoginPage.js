@@ -75,13 +75,13 @@ const LoginPage = () => {
             timeout();
             throw Error(authData.message);
           }
-        } else {
+        } 
           login(authData);
 
           addNotification("You logged in successfully!", types.success);
 
           navigate("/locations");
-        }
+        
       })
       .catch((error) => {
         console.log(error);

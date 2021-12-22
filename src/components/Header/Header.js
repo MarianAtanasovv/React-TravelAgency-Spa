@@ -78,16 +78,6 @@ const Header = () => {
             <div className="header-bottom  header-sticky">
               <div className="container-fluid">
                 <div className="row align-items-center">
-                  <div className="col-xl-2 col-lg-2 col-md-1">
-                    <div className="logo">
-                      <a href="index.html">
-                        <img
-                          src="assets/img/51618_19395788_3538899_d301cedf_image (3).jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                  </div>
                   <div className="col-xl-10 col-lg-10 col-md-8">
                     <div className="main-menu f-right d-none d-lg-block">
                       <nav>{user.email ? authenticatedArea : guestArea}</nav>

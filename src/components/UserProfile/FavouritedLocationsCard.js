@@ -5,7 +5,7 @@ const FavouritedLocations = () => {
       <div className="single-listing mb-30">
         <div className="list-img">
           <img
-            src="http://www.simpleimageresizer.com/_uploads/photos/b2fc7b42/pexels-photo-2486168_400x300.jpeg"
+            src="https://iasc.info/images/news/nordurskautsmynd-augl-2019.jpg"
             alt=""
           />
         </div>

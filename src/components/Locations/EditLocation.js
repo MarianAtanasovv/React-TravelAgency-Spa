@@ -25,7 +25,13 @@ const EditLocation = () => {
 
     let locationData = Object.fromEntries(new FormData(e.currentTarget));
 
-    countriesService.edit(location._id, locationData);
+    countriesService
+      .edit(location._id, locationData)
+      .then((res) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+
     addNotification("You successfully edited a location", types.success);
     navigate("/locations");
   };
@@ -101,7 +107,8 @@ const EditLocation = () => {
 
           <button type="submit">Submit</button>
         </div>
-      </form>/
+      </form>
+      /
     </div>
   );
 };

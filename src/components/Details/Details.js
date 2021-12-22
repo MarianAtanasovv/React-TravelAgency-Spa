@@ -46,31 +46,15 @@ const Details = () => {
     });
   }, [locationId]);
 
-  const deleteHandler = () => {
-    countriesService
-      .destroy(locationId, user.accessToken)
-      .then((result) => {
-        navigate("/");
-      })
-      .finally(() => {
-        setShowDeleteDialog(false);
-      });
-  };
-
-  const deleteClickHandler = (e) => {
-    e.preventDefault();
-    setShowDeleteDialog(true);
-  };
-
   const likeButtonClick = (e) => {
     if (user._id === location._ownerId) {
       addNotification("You cannot like your own location", types.warn);
       return;
     }
-    if (like?.length > 0) {
-      const currentLike = like?.find((x) => x._ownerId == user._id);
+    if (like.length > 0) {
+      const currentLike = like.find((x) => x._ownerId == user._id);
 
-      if (currentLike?._ownerId == user._id) {
+      if (currentLike._ownerId != undefined) {
         addNotification("You cannot like again", types.warn);
         return;
       }
@@ -100,7 +84,6 @@ const Details = () => {
       <ConfirmDialog
         show={showDeleteDialog}
         onClose={() => setShowDeleteDialog(false)}
-        onSave={deleteHandler}
       />
       <div>
         <div className="hero-area2  slider-height2 hero-overly2 d-flex align-items-center ">

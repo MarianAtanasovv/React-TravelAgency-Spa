@@ -2,7 +2,6 @@ import * as request from "./requester";
 const baseUrl = "http://localhost:3030/data";
 
 export const addLikedLocation = async (location, token) => {
-  console.log(location);
   let response = await fetch(`${baseUrl}/favourites`, {
     method: "POST",
     headers: {

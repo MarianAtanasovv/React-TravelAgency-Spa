@@ -68,6 +68,9 @@ const Create = () => {
         setLocation(locationId);
         navigate("/locations");
         addNotification("You successfully added a location", types.success);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 

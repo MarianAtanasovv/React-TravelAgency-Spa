@@ -3,5 +3,6 @@ This is my React application for SoftUni course - ReactJS for a travel experienc
 The application has a profile for each user where they can browse through the locations they have liked and the ones they have created. The user has the ability to delete or edit ONLY the locations they have created.
 A registered user can like any location that isn't created by them and can comment on any location. Any user can delete their own comments. Users cannot like locations twice. By liking a location it is addded to the user's profile where they can review all of their liked locations.
 
+Using SoftUni practice server: https://github.com/softuni-practice-server/softuni-practice-server
 HTML/CSS Template by Colorlib
 License: This project is licensed under the MIT License
