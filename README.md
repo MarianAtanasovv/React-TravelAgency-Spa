@@ -6,3 +6,6 @@ A registered user can like any location that isn't created by them and can comme
 Using SoftUni practice server: https://github.com/softuni-practice-server/softuni-practice-server<br />
 HTML/CSS Template by Colorlib <br />
 License: This project is licensed under the MIT License <br />
+
+Deployed to Heroku: 
+https://travel-app-experience.herokuapp.com
