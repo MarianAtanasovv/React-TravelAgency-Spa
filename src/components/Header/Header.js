@@ -6,6 +6,7 @@ import "./header.css";
 const Header = () => {
   const { user } = useContext(AuthContext);
 
+
   let authenticatedArea = (
     <ul id="navigation">
       <span className="welcome-span">Welcome, {user.email}</span>

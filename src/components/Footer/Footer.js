@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import ReactWeather, { useOpenWeather } from "react-open-weather";
+import "./footer.css";
 
 const Footer = () => {
+  const { data, isLoading, errorMessage } = useOpenWeather({
+    key: "4e60673780b284301f274c6fa0096492",
+    lat: "42.432997",
+    lon: "25.285989",
+    lang: "en",
+    unit: "metric", // values are (metric, standard, imperial)
+  });
   return (
     <div className="footer-area">
       <div className="container">
@@ -26,25 +35,22 @@ const Footer = () => {
                 </div>
               </div>
             </div>
+            <div className="forecast">
+              <ReactWeather
+                isLoading={isLoading}
+                errorMessage={errorMessage}
+                data={data}
+                lang="en"
+                locationLabel="Bulgaria"
+                unitsLabels={{
+                  temperature: "C",
+                  windSpeed: "Km/h",
+                }}
+                showForecast
+              />
+            </div>
             <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div className="single-footer-caption mb-50"></div>
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <div className="row d-flex justify-content-between align-items-center">
-            <div className="col-xl-9 col-lg-8">
-              <div className="footer-copy-right">
-                <p>
-                  Copyright &copy;
-                  <script>document.write(new Date().getFullYear());</script> All
-                  rights reserved | This template is made with{" "}
-                  <i className="fa fa-heart" aria-hidden="true"></i> by{" "}
-                  <a href="https://colorlib.com" target="_blank">
-                    Colorlib
-                  </a>
-                </p>
-              </div>
             </div>
           </div>
         </div>
