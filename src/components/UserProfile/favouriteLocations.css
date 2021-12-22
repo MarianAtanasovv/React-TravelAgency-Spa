@@ -1,0 +1,24 @@
+
+.box-wrapper{
+    display: flex;
+    background-color:lightgray;
+    align-items: center;
+    height: 250px;
+    width: 50%;
+    margin-left: 250px;
+    border: 0.5px solid lightgray;
+    border-radius: 13px;
+    text-align: center;
+  }
+  .box-img{
+    height: 250px;
+    background-color: lightgray;
+    padding: 25px;
+  }
+  .box{
+    margin:30px;
+  }
+  .delete-btn{
+    margin-left: 85px;
+  }
+ 
