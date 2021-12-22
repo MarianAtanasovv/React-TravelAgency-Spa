@@ -8,6 +8,7 @@ import {
   types,
 } from "../../contexts/NotificationContext";
 import { Alert } from "react-bootstrap";
+import * as validationHelper from "../common/ValidationHelper";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -30,8 +31,16 @@ const RegisterPage = () => {
     let { email, password, confirmPassword } = Object.fromEntries(
       new FormData(e.currentTarget)
     );
+    if (!validationHelper.emailRegex.test(email)) {
+      setErrors((state) => ({
+        ...state,
+        name: "Enter a valid email",
+      }));
 
-    if (password.length < 6 || confirmPassword.length < 6) {
+      timeout();
+
+      return;
+    } else if (password.length < 6 || confirmPassword.length < 6) {
       setErrors((state) => ({
         ...state,
         name: "Password can't be less 6 symbols!",

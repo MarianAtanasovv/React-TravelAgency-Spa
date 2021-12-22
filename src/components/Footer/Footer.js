@@ -20,9 +20,7 @@ const Footer = () => {
                 <div className="footer-tittle">
                   <ul>
                     <Link to={"/about-us"}>
-                      <li>
-                        <a>About us</a>
-                      </li>
+                      <li>About us</li>
                     </Link>
                     <h4>Contact us at: </h4>
 
