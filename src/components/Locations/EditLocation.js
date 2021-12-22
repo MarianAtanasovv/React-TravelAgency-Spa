@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { Select, MenuItem } from "@material-ui/core";
 import countries from "i18n-iso-countries";
@@ -99,11 +99,9 @@ const EditLocation = () => {
             defaultValue={location.exactAddress}
           />
 
-          <button type="submit" href="/">
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </div>
-      </form>
+      </form>/
     </div>
   );
 };

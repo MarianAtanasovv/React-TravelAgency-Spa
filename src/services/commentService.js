@@ -45,5 +45,4 @@ export const edit = (commentData, commentId, token) => {
     },
     body: JSON.stringify(commentData),
   }).then((res) => res.json());
- 
 };

@@ -17,8 +17,6 @@ export const addLikedLocation = async (location, token) => {
   return result;
 };
 
-
-
 export const getAllLocations = () => request.get(`${baseUrl}/locations`);
 
 export const getAllFavourites = () => request.get(`${baseUrl}/favourites`);

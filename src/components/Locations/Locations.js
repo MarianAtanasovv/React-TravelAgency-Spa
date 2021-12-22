@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import * as countriesService from "../../services/locationService";
 import LocationsCard from "../Locations/LocationsCard";
 import "./locations.css";
@@ -14,8 +13,6 @@ const Locations = () => {
     });
   }, []);
 
-
-  
   return (
     <div className="listing-area pt-120 pb-120">
       <div className="container">

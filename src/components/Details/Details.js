@@ -75,28 +75,25 @@ const Details = () => {
         return;
       }
     }
+    if (user._id == "") {
+      navigate("/login-page");
+      addNotification("You need to be logged in order to like", types.error);
+      console.log("check");
+    }
 
     likesService.like(user._id, locationId).then((res) => {
       setLike((state) => [...state, res]);
 
-      profileService.addLikedLocation(location, user.accessToken).then(() => {
-        addNotification("Location added to favourites", types.success);
-      });
+      profileService
+        .addLikedLocation(location, user.accessToken)
+        .then(() => {
+          addNotification("Location added to favourites", types.success);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     });
   };
-
-  const ownerDelete = (
-    <button className="delete-btn" onClick={deleteClickHandler}>
-      <i className="fa fa-trash"> Delete </i>
-    </button>
-  );
-  const ownerEdit = (
-    <Link to={`/edit/${locationId}`}>
-      <button className="delete-btn">
-        <i className="fa fa-trash"> Edit </i>
-      </button>
-    </Link>
-  );
 
   return (
     <>
@@ -143,8 +140,6 @@ const Details = () => {
                 />
 
                 <p id="total-likes">Likes: {like.length}</p>
-                {user._id === location._ownerId ? ownerDelete : null}
-                {user._id === location._ownerId ? ownerEdit : null}
                 <Comments />
               </div>
             </div>

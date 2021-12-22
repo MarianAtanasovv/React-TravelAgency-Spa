@@ -2,12 +2,18 @@ import * as commentService from "../../services/commentService";
 import { useContext, useEffect, useState, React } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import Comment from "./Comment";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
+import {
+  useNotificationContext,
+  types,
+} from "../../contexts/NotificationContext";
 
 const Comments = () => {
   const { user } = useContext(AuthContext);
   const [comments, setComments] = useState([]);
   const { locationId } = useParams();
+  const { addNotification } = useNotificationContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     commentService.getAll().then((result) => {
@@ -28,6 +34,10 @@ const Comments = () => {
     let comment = formData.get("comment");
     let currenctLocationId = locationId;
 
+    if (user._id == "") {
+      navigate("/login-page");
+      addNotification("You need to be logged in order to like", types.error);
+    }
     commentService
       .create(
         {

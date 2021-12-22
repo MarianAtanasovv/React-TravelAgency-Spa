@@ -8,7 +8,6 @@ import {
   types,
 } from "../../contexts/NotificationContext";
 import { Alert } from "react-bootstrap";
-import * as validationHelper from "../common/ValidationHelper";
 
 const RegisterPage = () => {
   const navigate = useNavigate();

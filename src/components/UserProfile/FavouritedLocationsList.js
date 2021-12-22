@@ -4,7 +4,6 @@ import * as profileService from "../../services/profileService";
 import { AuthContext } from "../../contexts/authContext";
 import "./userProfile.css";
 import "./favouriteLocations.css";
-
 import { Link } from "react-router-dom";
 
 const FavouritedLocationsList = () => {
